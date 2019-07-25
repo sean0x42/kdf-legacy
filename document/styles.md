@@ -1,4 +1,4 @@
-# Styles
+# Named Styles
 
 > Last updated 2019/07/25.
 
@@ -88,8 +88,7 @@ values.
       "color": "green",
       "font-family": "Comic Sans, sans-serif",
       "font-size": "12pt",
-      "margin": "2em 0",
-      ""
+      "margin": "2em 0"
     }
   }
 }
