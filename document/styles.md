@@ -1,32 +1,51 @@
-# Named Styles
+# Styles
 
-> Last updated 2019/07/25.
-
-
-## Abstract
-
-Named Styles defines a system of classifying and styling textual content in a
-document.
+This specification defines a system of classifying and styling textual content
+in Kauri Document Format (KDF), using CSS expressions and named styles.
 
 
 ## Table of Contents
 
- 1. [Abstract](#abstract)
- 2. [Glossary](#glossary)
- 3. [Defining a Named Style](#defining-a-named-style)
+ 1. [Glossary](#glossary)
+ 2. [Heirarchy](#heirarchy)
+ 2. [Defining a Named Style](#defining-a-named-style)
     1. [`display` (Required)](#display-required)
     2. [`styles` (Required)](#styles-required)
     3. [`inherit`](#inherit)
- 4. [File Format](#file-format)
- 5. [Transportation Format](#transportation-format)
- 6. [Coming Soon](#coming-soon)
+ 3. [File Format](#file-format)
+ 4. [Transportation Format](#transportation-format)
+ 5. [Coming Soon](#coming-soon)
 
 
 ## Glossary
 
- - **Human readable**: A string that is designed to be consumed by *any*
+ - *Human readable*: A string that is designed to be consumed by *any*
    possible user. Including users with no technical expertise or experience.
- - **CSS expression**: A CSS property-value pair. e.g. `color: red;`.
+ - *CSS expression*: A CSS property-value pair. e.g. `color: red;`.
+
+
+## Heirarchy
+
+Styles are composed in JavaScript Object Notation (JSON), and are contained
+within a single, root JSON object with the following keys:
+
+ - `"page"` — A JSON object, which defines the appearance of each page.
+ - `"classes"` — A JSON object, which enumerates all available style classes.
+
+For example:
+
+```json
+{
+  "page": {
+    "size": "A4",
+    "orientation": "portrait",
+    "margin": "2cm 3cm"
+  },
+  "classes": {
+    "fig": { }
+  }
+}
+```
 
 
 ## Defining a Named Style
