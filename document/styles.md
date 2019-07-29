@@ -19,9 +19,20 @@ in Kauri Document Format (KDF), using CSS expressions and named styles.
 
 ## Glossary
 
- - *Human readable*: A string that is designed to be consumed by *any*
+ - **Human readable**: A string that is designed to be consumed by *any*
    possible user. Including users with no technical expertise or experience.
- - *CSS expression*: A CSS property-value pair. e.g. `color: red;`.
+ 
+ - **JSON**: JavaScript Object Notation.
+   > A lightweight data-interchange format. It is easy for humans to read and
+   > write. It is easy for machines to parse and generate.  
+   > — [json.org](https://json.org/)
+
+ - **CSS**: Cascading Style Sheets
+   > ...a language used to describe the presentation of a document written in
+   > HTML or XML. ...CSS describes how elements should be rendered on screen...  
+   > — [MDN (developer.mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+
+ - **CSS expression**: A CSS property-value pair. e.g. `color: red;`.
 
 
 ## Heirarchy
@@ -47,11 +58,14 @@ For example:
 }
 ```
 
+When storing styles in file format, please save the root JSON object to a file
+called `styles.json`.
 
-## Defining a Named Style
 
-Named styles are enumerated within a single JSON object. The keys in this object
-are used to uniquely identify each named style, which are also JSON objects.
+## Defining a Style Class
+
+Classes are enumerated within a single JSON object. The keys in this object are
+used to uniquely identify each named style, which are also JSON objects.
 
 ```json
 {
