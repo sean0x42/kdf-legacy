@@ -1,4 +1,8 @@
-# Styles
+---
+layout: post
+title: "Document Styles"
+categories: document
+---
 
 This specification defines a system of classifying and styling textual content
 in Kauri Document Format (KDF), using CSS expressions and classes.
@@ -55,7 +59,7 @@ within a single, root JSON object with the following keys:
 
 For example:
 
-```json
+{% highlight json %}
 {
   "page": {
     "size": "A4",
@@ -66,7 +70,7 @@ For example:
     "fig": { }
   }
 }
-```
+{% endhighlight %}
 
 
 ## File Format
@@ -95,35 +99,35 @@ one of the custom style expressions described in the sections below.
 A string, containing a [*page size constant*](#page-size-constants). A default
 value of `A4` is assumed when no value is given.
 
-```json
+{% highlight json %}
 {
   "page": {
     "size": "Letter"
   }
 }
-```
+{% endhighlight %}
 
 The CSS properties `height` and `width` will always take precedence over the
 `size`, effectively overriding it within one axis. Consider the following JSON
 snippet:
 
-```json
+{% highlight json %}
 {
   "page": {
     "size": "A4",
     "height": "100mm"
   }
 }
-```
+{% endhighlight %}
 
 This page could be described with the following CSS:
 
-```css
+{% highlight css %}
 .page {
-  height: 100mm; /* Overrides 297mm */
+  height: 100mm; /* Overrides 297mm \*/
   width: 210mm;
 }
-```
+{% endhighlight %}
 
 
 #### Page size constants
@@ -166,14 +170,14 @@ found on [papersizes.io](https://papersizes.io).
 A string, which describes the orientation of the page: `"portrait"`,
 `"landscape"`, or `null`.
 
-```json
+{% highlight json %}
 {
   "page": {
     "size": "A4",
     "orientation": "landscape"
   }
 }
-```
+{% endhighlight %}
 
  - When `landscape`, the calculated width and height of the page will be
    swapped if and only if `height > width`.
@@ -197,21 +201,21 @@ some rules to determine the ground truth.
 When the CSS property `margin` is used to style a page, treat it as `padding`
 instead.
 
-```json
+{% highlight json %}
 {
   "page": {
     "margin": "2.8cm 4cm"
   }
 }
-```
+{% endhighlight %}
 
 The above example JSON would be described in CSS as follows:
 
-```css
+{% highlight css %}
 .page {
   padding: 2.8cm 4cm;
 }
-```
+{% endhighlight %}
 
 The CSS property `padding` is treated as invalid, and should be ignored.
 
@@ -221,7 +225,7 @@ The CSS property `padding` is treated as invalid, and should be ignored.
 Classes are enumerated within a single JSON object, where the keys are unique
 and identify a single class.
 
-```json
+{% highlight json %}
 {
   "h1": {
     "display": "Heading 1",
@@ -240,7 +244,7 @@ and identify a single class.
     }
   }
 }
-```
+{% endhighlight %}
 
 
 ### `display`
@@ -252,14 +256,14 @@ and identify a single class.
 
 A *human readable* string, which can be shown to users.
 
-```json
+{% highlight json %}
 {
   "fig": {
     "display": "Figures & Captions",
     "styles": {}
   }
 }
-```
+{% endhighlight %}
 
 
 ### `styles`
@@ -274,7 +278,7 @@ contains a CSS property, and each value is a string containing a CSS value.
 
 > **Note**: Be careful not to include a trailing semi-colon after CSS values!
 
-```json
+{% highlight json %}
 {
   "p": {
     "display": "Body Text",
@@ -286,7 +290,7 @@ contains a CSS property, and each value is a string containing a CSS value.
     }
   }
 }
-```
+{% endhighlight %}
 
 
 ### `inherit`
@@ -301,7 +305,7 @@ contains a CSS property, and each value is a string containing a CSS value.
 A string containing the unique ID of another class, from which to inherit
 styles from.
 
-```json
+{% highlight json %}
 {
   "body": {
     "display": "Body Text",
@@ -318,11 +322,11 @@ styles from.
     }
   }
 }
-```
+{% endhighlight %}
 
 This relationship could be described in CSS as follows:
 
-```css
+{% highlight css %}
 body,
 .headings {
   font-family: Inter, sans-serif;
@@ -332,4 +336,4 @@ body,
 .headings {
   font-size: 2em;
 }
-```
+{% endhighlight %}
