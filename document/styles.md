@@ -1,38 +1,48 @@
 # Styles
 
 This specification defines a system of classifying and styling textual content
-in Kauri Document Format (KDF), using CSS expressions and named styles.
+in Kauri Document Format (KDF), using CSS expressions and classes.
 
 
 ## Table of Contents
 
  1. [Glossary](#glossary)
  2. [Heirarchy](#heirarchy)
- 2. [Defining a Named Style](#defining-a-named-style)
-    1. [`display` (Required)](#display-required)
-    2. [`styles` (Required)](#styles-required)
-    3. [`inherit`](#inherit)
  3. [File Format](#file-format)
- 4. [Transportation Format](#transportation-format)
- 5. [Coming Soon](#coming-soon)
+ 4. [Page Styles](#page-styles)
+    1. [`size`](#size)
+       - [Page size constants](#page-size-constants)
+    2. [`orientation`](#orientation)
+    3. [Padding and Margins](#padding-and-margins)
+ 5. [Style Classes](#style-classes)
+    1. [`display`](#display)
+    2. [`styles`](#styles)
+    3. [`inherit`](#inherit)
 
 
 ## Glossary
 
  - **Human readable**: A string that is designed to be consumed by *any*
    possible user. Including users with no technical expertise or experience.
- 
+
  - **JSON**: JavaScript Object Notation.
+
    > A lightweight data-interchange format. It is easy for humans to read and
    > write. It is easy for machines to parse and generate.  
    > — [json.org](https://json.org/)
 
  - **CSS**: Cascading Style Sheets
+
    > ...a language used to describe the presentation of a document written in
    > HTML or XML. ...CSS describes how elements should be rendered on screen...  
    > — [MDN (developer.mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
  - **CSS expression**: A CSS property-value pair. e.g. `color: red;`.
+
+ - **Case-insensitive**: An operation which ignores the case of a string. i.e.
+   `Hello World` is considered to be equal to `HELLO WORLD`.
+
+ - **Case-sensitive**: The opposite of *case-insensitive*.
 
 
 ## Heirarchy
@@ -40,8 +50,8 @@ in Kauri Document Format (KDF), using CSS expressions and named styles.
 Styles are composed in JavaScript Object Notation (JSON), and are contained
 within a single, root JSON object with the following keys:
 
- - `"page"` — A JSON object, which defines the appearance of each page.
- - `"classes"` — A JSON object, which enumerates all available style classes.
+ - `page` — A JSON object, which defines the appearance of each page.
+ - `classes` — A JSON object, which enumerates all available style classes.
 
 For example:
 
@@ -58,14 +68,158 @@ For example:
 }
 ```
 
-When storing styles in file format, please save the root JSON object to a file
-called `styles.json`.
+
+## File Format
+
+When storing styles in the Kauri Document Format, serialize the root JSON
+object to a file called `styles.json`, in the root directory of the document
+archive.
 
 
-## Defining a Style Class
 
-Classes are enumerated within a single JSON object. The keys in this object are
-used to uniquely identify each named style, which are also JSON objects.
+## Page Styles
+
+The `page` styles JSON object, contains zero or more key-value pairs, which
+describe the appearance of each page. You may use any valid CSS expression, or
+one of the custom style expressions described in the sections below.
+
+### `size`
+
+| Property       | Value   |
+|:---------------|:--------|
+| Type           | String  |
+| Required       | ❌      |
+| Default        | `"A4"`  |
+| Case-sensitive | ❌      |
+
+A string, containing a [*page size constant*](#page-size-constants). A default
+value of `A4` is assumed when no value is given.
+
+```json
+{
+  "page": {
+    "size": "Letter"
+  }
+}
+```
+
+The CSS properties `height` and `width` will always take precedence over the
+`size`, effectively overriding it within one axis. Consider the following JSON
+snippet:
+
+```json
+{
+  "page": {
+    "size": "A4",
+    "height": "100mm"
+  }
+}
+```
+
+This page could be described with the following CSS:
+
+```css
+.page {
+  height: 100mm; /* Overrides 297mm */
+  width: 210mm;
+}
+```
+
+
+#### Page size constants
+
+The following page size constants are currently available for use (more may be
+added in future):
+
+ - **A and B Series**: As defined by ISO 216. e.g. `A4`, `B9` etc.
+
+ - **C Series**: As defined by ISO 269. e.g. `C1`, `C2`, or `C5`.
+
+ - **Common US Loose Sizes**: The following four sizes are available: `Letter`,
+   `Legal`, `Tabloid`, and `Ledger`.
+
+ - **US ANSI Series**: As defined by ANSI/ASME Y14.1 and Y14.1M. e.g. `ANSI A`,
+   ..., `ANSI K`.
+
+ - **US ARCH Series**: As defined by ANSI/ASME Y14.1 and Y14.1M. e.g. `ARCH A`,
+   ..., `Arch E3`.
+
+ - **JIS A and B Series**: As defined by the Japanese Industrial Standards
+   (JIS). e.g. `JB0`, ..., `JB12`.
+
+ - **Shiroku Ban and Kiku**: The following 5 sizes are available: `Shiroku ban
+   4`, `Shiroku ban 5`, `Shiroku ban 6`, `Kiku 4`, `Kiku 5`.
+
+The exact size of these constants (plus some history and background) can be
+found on [papersizes.io](https://papersizes.io).
+
+
+### `orientation`
+
+| Property       | Value  |
+|:---------------|:-------|
+| Type           | String |
+| Required       | ❌     |
+| Default        | `null` |
+| Case-sensitive | ❌     |
+
+A string, which describes the orientation of the page: `"portrait"`,
+`"landscape"`, or `null`.
+
+```json
+{
+  "page": {
+    "size": "A4",
+    "orientation": "landscape"
+  }
+}
+```
+
+ - When `landscape`, the calculated width and height of the page will be
+   swapped if and only if `height > width`.
+ - When `portrait`, the calculated width and height of the page will be swapped
+   if and only if `width > height`.
+ - When `null`, no swapping will occur.
+
+
+### Padding and Margins
+
+> Margins create extra space around an element. In contrast, `padding` creates
+> extra space *within* an element.  
+> — [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/CSS/margin)
+
+The above snippet describes the difference between the CSS properties `margin`
+and `padding`. In print/typography however, we typically use the term *margin*
+to refer to spacing *within* the page, which is in direct contrast to the
+definition laid out by CSS. Because of this discrepancy, we need to lay out
+some rules to determine the ground truth.
+
+When the CSS property `margin` is used to style a page, treat it as `padding`
+instead.
+
+```json
+{
+  "page": {
+    "margin": "2.8cm 4cm"
+  }
+}
+```
+
+The above example JSON would be described in CSS as follows:
+
+```css
+.page {
+  padding: 2.8cm 4cm;
+}
+```
+
+The CSS property `padding` is treated as invalid, and should be ignored.
+
+
+## Style Classes
+
+Classes are enumerated within a single JSON object, where the keys are unique
+and identify a single class.
 
 ```json
 {
@@ -89,10 +243,14 @@ used to uniquely identify each named style, which are also JSON objects.
 ```
 
 
-### `display` (Required)
+### `display`
 
-The `display` key defines a *human readable* string, which will be shown to
-users choosing from possible named styles. For example:
+| Property | Value  |
+|:---------|:-------|
+| Type     | String |
+| Required | ✔️      |
+
+A *human readable* string, which can be shown to users.
 
 ```json
 {
@@ -104,12 +262,15 @@ users choosing from possible named styles. For example:
 ```
 
 
-### `styles` (Required)
+### `styles`
 
-The `styles` key defines a list of *CSS expressions*, which should be applied to
-any text content with the given named style. CSS expressions are enumerated in a
-JSON object, where the keys contain a CSS property, and the values are CSS
-values.
+| Property | Value  |
+|:---------|:-------|
+| Type     | Object |
+| Required | ✔️      |
+
+A list of *CSS expressions*, which are enumerated in a JSON object. Each key
+contains a CSS property, and each value is a string containing a CSS value.
 
 > **Note**: Be careful not to include a trailing semi-colon after CSS values!
 
@@ -130,10 +291,15 @@ values.
 
 ### `inherit`
 
-The `inherit` key gives the unique ID of another named style, from which to
-inherit styles from. This allows you to setup a *cascade* effect — where
-changing the value of one named style, causes all inheriting named styles to
-also be updated.
+| Property       | Value  |
+|:---------------|:-------|
+| Type           | String |
+| Required       | ❌     |
+| Default        | `null` |
+| Case-sensitive | ✔️      |
+
+A string containing the unique ID of another class, from which to inherit
+styles from.
 
 ```json
 {
@@ -154,10 +320,10 @@ also be updated.
 }
 ```
 
-This would result in the following CSS:
+This relationship could be described in CSS as follows:
 
 ```css
-.body,
+body,
 .headings {
   font-family: Inter, sans-serif;
   font-size: 12pt;
@@ -167,39 +333,3 @@ This would result in the following CSS:
   font-size: 2em;
 }
 ```
-
-
-## File Format
-
-When storing named styles in file format, place all named styles within a single
-JSON file called `styles.json`. This file should be in the root directory of the
-document archive.
-
-
-## Transportation Format
-
-When sending named styles over a HTTP 1.1 connection, only a single file can be
-included in an HTTP response. As such, named styles may be delivered in
-*transportation format*. 
-
-In transformation format, named styles should be included as a single JSON
-object, as seen in the example below:
-
-```json
-{
-  "foo": { ... },
-  "bar": { ... },
-  "styles": {
-    "body": {
-      ...
-    }
-  }
-}
-```
-
-
-
-## Coming Soon
-
- * Styles (other than named styles, such as page styles)
- * Wrapping
