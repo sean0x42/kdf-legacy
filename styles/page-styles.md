@@ -13,7 +13,7 @@ The `page` styles JSON object, contains zero or more key-value pairs, which desc
 
 A string, containing a _page size constant_. A default value of `A4` is assumed when no value is given.
 
-```json
+```javascript
 {
   "page": {
     "size": "Letter"
@@ -23,7 +23,7 @@ A string, containing a _page size constant_. A default value of `A4` is assumed 
 
 The CSS properties `height` and `width` will always take precedence over the `size`, effectively overriding it within one axis. Consider the following JSON snippet:
 
-```json
+```javascript
 {
   "page": {
     "size": "A4",
@@ -66,7 +66,7 @@ The exact size of these constants \(plus some history and background\) can be fo
 
 A string, which describes the orientation of the page: `"portrait"`, `"landscape"`, or `null`.
 
-```json
+```javascript
 {
   "page": {
     "size": "A4",
@@ -95,7 +95,7 @@ The above snippet describes the difference between the CSS properties `margin` a
 
 When the CSS property `margin` is used to style a page, treat it as `padding` instead.
 
-```json
+```javascript
 {
   "page": {
     "margin": "2.8cm 4cm"

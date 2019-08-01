@@ -1,6 +1,6 @@
----
-description: Get started with KDF.
----
+# Welcome to KDF
 
-# Kauri Document Format
+Welcome!
+
+The following is a technical specification which defines the Kauri Document Format \(working title\). 
 

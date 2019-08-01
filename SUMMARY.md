@@ -1,10 +1,19 @@
 # Table of contents
 
-* [Kauri Document Format](README.md)
+* [Welcome to KDF](README.md)
+* [File & Transportation Formats](file-and-transportation-formats.md)
 
-## Styles <a id="styles-1"></a>
+## Metadata
 
-* [Introduction](styles-1/introduction.md)
-* [Page Styles](styles-1/page-styles.md)
-* [Classes](styles-1/classes.md)
+* [Introduction](metadata/untitled.md)
+
+## Content
+
+* [Introduction](content/untitled.md)
+
+## Styles
+
+* [Introduction](styles/introduction.md)
+* [Page Styles](styles/page-styles.md)
+* [Classes](styles/classes.md)
 
