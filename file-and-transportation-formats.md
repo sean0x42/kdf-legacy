@@ -1,12 +1,14 @@
-# File & Transportation Formats
+# Archive Structure
 
-There are two main ways of representing a KDF document: _file format_ and _transportation format_. File format is the recommended representation for most purposes.
+Kauri Project Format files \(`.kpf`\) are archives with the following directory structure:
 
-## File Format
+* `meta.json`
+* `styles.json` 
+* `content.json` 
 
-Description of file format here.
+## Future Expansion
 
-## Transportation Format
-
-Description of transportation format here.
+* [ ] `colours.json` 
+* [ ] Some kind of version control
+* [ ] Dictionary
 

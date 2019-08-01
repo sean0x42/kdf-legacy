@@ -1,22 +1,21 @@
 # Page Styles
 
-The `page` styles JSON object, contains zero or more key-value pairs, which describe the appearance of each page. You may use any valid CSS expression, or one of the custom style expressions described in the sections below.
+{% hint style="info" %}
+**Note**: There is presently no way to have different styles for different pages. If there is sufficient demand for such a feature however, we could add more fine control in future.
+{% endhint %}
 
-## `size`
+The `page` JSON object, allows you to define a series of styles which apply to the pages in your document. You may notice that Kauri style expressions are reminiscent of CSS expressions
 
-| Property | Value |
-| :--- | :--- |
-| Type | String |
-| Required | ❌ |
-| Default | `"A4"` |
-| Case-sensitive | ❌ |
+## Size
 
-A string, containing a _page size constant_. A default value of `A4` is assumed when no value is given.
+`size` is an optional string property, which allows you to use one of the many supported [page sizes](supported-page-sizes.md). A default value of `"A4"` is assumed when no value is given.
+
+{% page-ref page="supported-page-sizes.md" %}
 
 ```javascript
 {
   "page": {
-    "size": "Letter"
+    "size": "A4"
   }
 }
 ```
@@ -41,30 +40,9 @@ This page could be described with the following CSS:
 }
 ```
 
-### **Page Size Constants**
+## Orientation
 
-The following page size constants are currently available for use \(more may be added in future\):
-
-* **A and B Series**: As defined by ISO 216.
-* **C Series**: As defined by ISO 269.
-* **Common US Loose Sizes**: The following four sizes are available: `Letter`, `Legal`, `Tabloid`, and `Ledger`.
-* **US ANSI Series**: As defined by ANSI/ASME Y14.1 and Y14.1M.
-* **US ARCH Series**: As defined by ANSI/ASME Y14.1 and Y14.1M.
-* **JIS A and B Series**: As defined by the Japanese Industrial Standards \(JIS\).
-* **Shiroku Ban and Kiku**: The following 5 sizes are available: `Shiroku ban 4`, `Shiroku ban 5`, `Shiroku ban 6`, `Kiku 4`, `Kiku 5`.
-
-The exact size of these constants \(plus some history and background\) can be found on [papersizes.io](https://papersizes.io).
-
-## `orientation`
-
-| Property | Value |
-| :--- | :--- |
-| Type | String |
-| Required | ❌ |
-| Default | `null` |
-| Case-sensitive | ❌ |
-
-A string, which describes the orientation of the page: `"portrait"`, `"landscape"`, or `null`.
+The optional `orientation` property describes whether pages in this document should be rendered as `"portrait"` or `"landscape"`. The default value is `null`, where the orientation is inferred based on the page's width and height.
 
 ```javascript
 {
@@ -75,25 +53,14 @@ A string, which describes the orientation of the page: `"portrait"`, `"landscape
 }
 ```
 
-* When `landscape`, the calculated width and height of the page will be
+## Margins
 
-  swapped if and only if `height > width`.
+`margin` is an optional property, which defines the amount of spacing between the edge of the document's content area, and the side of the page. The example below uses the `margin` shorthand, but the following properties are also available—and typically encouraged unless you're editing the styles by hand:
 
-* When `portrait`, the calculated width and height of the page will be swapped
-
-  if and only if `width > height`.
-
-* When `null`, no swapping will occur.
-
-## Padding and Margins
-
-> Margins create extra space around an element. In contrast, `padding` creates extra space _within_ an element.
->
-> — [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/CSS/margin)
-
-The above snippet describes the difference between the CSS properties `margin` and `padding`. In print/typography however, we typically use the term _margin_ to refer to spacing _within_ the page, which is in direct contrast to the definition laid out by CSS. Because of this discrepancy, we need to lay out some rules to determine the ground truth.
-
-When the CSS property `margin` is used to style a page, treat it as `padding` instead.
+* `marginTop`
+* `marginBottom`
+* `marginLeft`
+* `marginRight`
 
 ```javascript
 {
@@ -103,7 +70,7 @@ When the CSS property `margin` is used to style a page, treat it as `padding` in
 }
 ```
 
-The above example JSON would be described in CSS as follows:
+This would be represented by the following CSS:
 
 ```css
 .page {
@@ -111,5 +78,12 @@ The above example JSON would be described in CSS as follows:
 }
 ```
 
-The CSS property `padding` is treated as invalid, and should be ignored.
+{% hint style="info" %}
+Note that we use the [typographic definition of margin](https://en.m.wikipedia.org/wiki/Margin_%28typography%29) here, rather than the [CSS definition](https://developer.mozilla.org/en-US/docs/Web/CSS/margin). Typographic margin is closer to CSS's padding.
+{% endhint %}
+
+## TODO
+
+* [ ] Background
+* [ ] Borders
 

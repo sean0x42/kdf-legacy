@@ -1,23 +1,53 @@
 # Introduction
 
-Styles are composed in JavaScript Object Notation \(JSON\), and are contained within a single, root JSON object with the following keys:
+Styles are contained within a single, root JSON object with the following keys:
 
-* `page` – A JSON object, which defines the appearance of each page.
-* `classes` – A JSON object, which enumerates all available style classes.
+* `page` – A JSON object, which defines the appearance of the page.
+* `classes` – A JSON object, which enumerates all available classes.
 
-For example:
+A sample `styles.json` is included below.
 
 {% code-tabs %}
 {% code-tabs-item title="styles.json" %}
-```yaml
+```javascript
 {
   "page": {
     "size": "A4",
     "orientation": "portrait",
-    "margin": "2cm 3cm"
+    "margin": "2cm 3cm",
+    "borderWidth": "1px",
+    "borderStyle": "solid"
   },
   "classes": {
-    "fig": { }
+    "body": {
+      "display": "Body Text",
+      "styles": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "12pt",
+        "color": "#333",
+        "lineHeight": "1.4"
+      }
+    },
+    "h1": {
+      "display": "Heading 1",
+      "inherit": "body",
+      "element": {
+        "type": "heading",
+        "attributes": {
+          "level": 1,
+        }
+      },
+      "styles": {
+        "color": "#111",
+        "fontSize": "2em",
+        "lineHeight": "1",
+        "fontWeight": "600",
+        "spacing": "4em 0 1em",
+      }
+    },
+    {
+      ...
+    }
   }
 }
 ```

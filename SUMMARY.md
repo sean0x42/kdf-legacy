@@ -1,11 +1,12 @@
 # Table of contents
 
-* [Welcome to KDF](README.md)
-* [File & Transportation Formats](file-and-transportation-formats.md)
+* [Welcome](README.md)
+* [Archive Structure](file-and-transportation-formats.md)
 
 ## Metadata
 
 * [Introduction](metadata/untitled.md)
+* [Required Fields](metadata/required-fields.md)
 
 ## Content
 
@@ -15,5 +16,6 @@
 
 * [Introduction](styles/introduction.md)
 * [Page Styles](styles/page-styles.md)
+* [Supported Page Sizes](styles/supported-page-sizes.md)
 * [Classes](styles/classes.md)
 
