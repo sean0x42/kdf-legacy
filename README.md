@@ -1,9 +1,6 @@
-# Kauri Document Spec
+---
+description: Get started with KDF.
+---
 
-The following repo contains a spec which defines the Kauri custom document
-format.
+# Kauri Document Format
 
-## Directory
-
- - Document Specs
-   - [Styles](https://seanbailey.io/kauri-specs/document/styles)
