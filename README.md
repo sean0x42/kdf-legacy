@@ -16,6 +16,8 @@ The following is a pseudo-technical specification which defines and discusses th
 
 There are already a number of existing, open document formats, so why should we make an entirely new document format just for Kauri? Especially when we consider the following comic from XKCD author Randall Munroe. two major existing document formats that are prevalent today:
 
+![https://xkcd.com/927/](.gitbook/assets/standards.png)
+
 * _Open Document Format \(ODF\)_ – An XML based document format favoured by open source document processors like LibreOffice and Apache OpenOffice.
 * _Office Open XML \(DOCX\)_ – An XML based document format primarily used by Microsoft Word. The technical specification is over 5000 pages long.
 
@@ -24,6 +26,4 @@ There's nothing inherently wrong with the aforementioned formats, but they lack 
 Who is the target audience of this spec? 
 
 Much like the IntelliJ IDEA project format, it's not meant to be an open standard that all document processors understand how to parse and edit. But rather, it's just meant to allow us to iterate and make changes as necessary, and easily add features that don't exist in other formats.
-
-![https://xkcd.com/927/](.gitbook/assets/standards.png)
 
