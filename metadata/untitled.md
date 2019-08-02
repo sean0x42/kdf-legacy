@@ -1,7 +1,13 @@
+---
+description: A basic introduction to KDF meta data.
+---
+
 # Introduction
 
 > _Metadata is data that provides information about other data._  
-> — [Wikipedia](https://en.m.wikipedia.org/wiki/Metadata)
+> — [Wikipedia \(Metadata\)](https://en.m.wikipedia.org/wiki/Metadata)
+
+Kauri uses document metadata for a number of reasons, each aimed at improving the user's experience. Some metadata is used for statistical purposes, such as tracking the total amount of time spent editing a document. Other metadata is used to help readers learn more about a document, such as the title, and list of contributors. The following sample shows what a typical `meta.json` might look like:
 
 {% code-tabs %}
 {% code-tabs-item title="meta.json" %}
@@ -22,7 +28,7 @@
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-No restrictions: you can define as much metadata as you like.
-
-Kauri tries to define only metadata that is directly useful to the user, but other metadata may be included. 
+{% hint style="info" %}
+**Note**: There are no restrictions on what data can be stored in `meta.json`. There are however a few required fields, that will be explored on the next page.
+{% endhint %}
 
