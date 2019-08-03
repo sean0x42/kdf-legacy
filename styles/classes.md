@@ -8,16 +8,16 @@ Classes are enumerated within a single JSON object, where the keys are unique an
     "display": "Heading 1",
     "styles": {
       "color": "#333",
-      "font-size": "2rem",
-      "margin": "4rem 0 2rem"
+      "fontSize": "2rem",
+      "spacing": "4rem 0 2rem"
     }
   },
   "h2": {
     "display": "Heading 2",
     "styles": {
       "color": "#444",
-      "font-size": "1.2rem",
-      "margin": "3rem 0 2rem"
+      "fontSize": "1.2rem",
+      "spacing": "3rem 0 2rem"
     }
   }
 }
@@ -62,9 +62,9 @@ Be careful not to include a trailing semi-colon after CSS values!
     "display": "Body Text",
     "styles": {
       "color": "green",
-      "font-family": "Comic Sans, sans-serif",
-      "font-size": "12pt",
-      "margin": "2em 0"
+      "fontFamily": "Comic Sans, sans-serif",
+      "fontSize": "12pt",
+      "spacing": "2em 0"
     }
   }
 }
@@ -86,15 +86,15 @@ A string containing the unique ID of another class, from which to inherit styles
   "body": {
     "display": "Body Text",
     "styles": {
-      "font-family": "Inter, sans-serif",
-      "font-size": "12pt"
+      "fontFamily": "Inter, sans-serif",
+      "fontSize": "12pt"
     }
   },
   "headings": {
     "display": "Headings",
     "inherit": "body",
     "styles": {
-      "font-size": "2em"
+      "fontSize": "2em"
     }
   }
 }

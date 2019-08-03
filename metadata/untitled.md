@@ -22,6 +22,7 @@ Kauri uses document metadata for a number of reasons, each aimed at improving th
     "David Abraham"
   ],
   "createdAt": "2019-08-01T12:59:15+11:00",
+  "updatedAt": "2019-08-01T12:59:15+11:00",
   "editDuration": "P3Y6M4DT12H30M5S"
 }
 ```
