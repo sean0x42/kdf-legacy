@@ -19,7 +19,7 @@
 
 * [Introduction](styles/introduction.md)
 * [Page Styles](styles/page-styles.md)
-* [Supported Page Sizes](styles/supported-page-sizes.md)
-* [Classes](styles/classes.md)
 * [Style Expressions](styles/style-expressions.md)
+* [Supported Page Sizes](styles/supported-page-sizes.md)
+* [Creating Classes](styles/classes.md)
 

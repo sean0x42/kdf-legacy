@@ -16,7 +16,6 @@
 
 For example, imagine writing a document about HTTP headers:
 
-> The **HTTP** **referer** \(originally a misspelling of **referrer**[\[1\]](https://en.m.wikipedia.org/wiki/HTTP_referer#cite_note-1)\) is an optional [HTTP header field](https://en.m.wikipedia.org/wiki/List_of_HTTP_header_fields) that identifies the address of the webpage...
->
+> _The **HTTP** **referer** \(originally a misspelling of **referrer**\) is an optional HTTP header field that identifies the address of the webpage..._  
 > —[HTTP referer \(Wikipedia\)](https://en.m.wikipedia.org/wiki/HTTP_referer)
 

@@ -1,4 +1,4 @@
-# Classes
+# Creating Classes
 
 Classes are enumerated within a single JSON object, where the keys are unique and identify a single class.
 
@@ -23,38 +23,22 @@ Classes are enumerated within a single JSON object, where the keys are unique an
 }
 ```
 
-## `display`
+## Display
 
-| Property | Value |
-| :--- | :--- |
-| Type | String |
-| Required | ✔️ |
-
-A _human readable_ string, which can be shown to users.
+A required _human readable_ string, which can be shown to users.
 
 ```yaml
 {
   "fig": {
     "display": "Figures & Captions",
-    "styles": {}
+    "styles": { ... }
   }
 }
 ```
 
+## Styles
 
-
-## `styles`
-
-| Property | Value |
-| :--- | :--- |
-| Type | Object |
-| Required | ✔️ |
-
-A list of _CSS expressions_, which are enumerated in a JSON object. Each key contains a CSS property, and each value is a string containing a CSS value.
-
-{% hint style="info" %}
-Be careful not to include a trailing semi-colon after CSS values!
-{% endhint %}
+A required list of [style expressions](style-expressions.md), which are enumerated within a JSON object. 
 
 ```yaml
 {
@@ -70,16 +54,11 @@ Be careful not to include a trailing semi-colon after CSS values!
 }
 ```
 
-## `inherit`
+{% page-ref page="style-expressions.md" %}
 
-| Property | Value |
-| :--- | :--- |
-| Type | String |
-| Required | ❌ |
-| Default | `null` |
-| Case-sensitive | ✔️ |
+## Inherit
 
-A string containing the unique ID of another class, from which to inherit styles from.
+An optional string containing the unique ID of another class, from which to inherit styles from.
 
 ```yaml
 {

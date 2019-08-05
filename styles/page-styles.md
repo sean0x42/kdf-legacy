@@ -42,7 +42,7 @@ This page could be described with the following CSS:
 
 ## Orientation
 
-The optional `orientation` property describes whether pages in this document should be rendered as `"portrait"` or `"landscape"`. The default value is `null`, where the orientation is inferred based on the page's width and height.
+The optional `orientation` property describes whether pages in this document should be rendered as `"portrait"`, `"landscape"`, or `"inferred"`. The default value is `"inferred"`, where the orientation is determined based on the page's width and height.
 
 ```javascript
 {
@@ -82,8 +82,12 @@ This would be represented by the following CSS:
 Note that we use the [typographic definition of margin](https://en.m.wikipedia.org/wiki/Margin_%28typography%29) here, rather than the [CSS definition](https://developer.mozilla.org/en-US/docs/Web/CSS/margin). Typographic margin is closer to CSS's padding.
 {% endhint %}
 
-## TODO
+## Other
 
-* [ ] Background
-* [ ] Borders
+The following [style expressions](style-expressions.md) are also available for use in page styles:
+
+* Background
+* Borders
+
+{% page-ref page="style-expressions.md" %}
 
