@@ -1,4 +1,6 @@
-# Plain Text
+# Nodes
+
+## Text
 
 Text nodes can be used in place of other elements. They may not have styles, classes, or children. Instead, they must have a `"content"` key.
 

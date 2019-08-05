@@ -6,8 +6,8 @@
 ## Content
 
 * [Introduction](content/untitled.md)
-* [Plain Text](content/plain-text.md)
-* [Element Types](content/element-types.md)
+* [Nodes](content/plain-text.md)
+* [Elements](content/element-types.md)
 
 ## Metadata
 
