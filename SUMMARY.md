@@ -1,17 +1,18 @@
 # Table of contents
 
 * [Welcome](README.md)
-* [Archive Structure](file-and-transportation-formats.md)
+* [Archive Structure](archive-structure.md)
+* [Dictionary](dictionary.md)
 
 ## Content
 
-* [Introduction](content/untitled.md)
-* [Nodes](content/plain-text.md)
-* [Elements](content/element-types.md)
+* [Introduction](content/introduction.md)
+* [Nodes](content/nodes.md)
+* [Elements](content/elements.md)
 
 ## Metadata
 
-* [Introduction](metadata/untitled.md)
+* [Introduction](metadata/introduction.md)
 * [Required Fields](metadata/required-fields.md)
 
 ## Styles

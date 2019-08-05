@@ -33,7 +33,7 @@ Elements are defined by a single JSON object, containing each of the following k
 
 | Key | Purpose |
 | :--- | :--- |
-| `"type"` | Determines the type of element, such as `"heading"`, `"image"` or `"table"`. If you where writing HTML, this would be the tag name. A list of [all available element types ](element-types.md)is available on the following page. |
+| `"type"` | Determines the type of element, such as `"heading"`, `"image"` or `"table"`. If you where writing HTML, this would be the tag name. A list of [all available element types ](elements.md)is available on the following page. |
 | `"class"` | An optional style class.  |
 | `"styles"` | An optional list of style expressions, which apply only to this element. These styles will always take precedence over the styles inherited from an element's class. You can view a list of all [possible styles here](../styles/style-expressions.md). |
 | `"children"` | A list of child elements.  |
