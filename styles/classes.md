@@ -38,7 +38,7 @@ A required _human readable_ string, which can be shown to users.
 
 ## Styles
 
-A required list of [style expressions](style-expressions.md), which are enumerated within a JSON object. 
+A required list of [KCSS expressions](kcss-expressions.md), which are enumerated within a JSON object. 
 
 ```yaml
 {
@@ -54,7 +54,7 @@ A required list of [style expressions](style-expressions.md), which are enumerat
 }
 ```
 
-{% page-ref page="style-expressions.md" %}
+{% page-ref page="kcss-expressions.md" %}
 
 ## Inherit
 

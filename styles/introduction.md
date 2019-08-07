@@ -1,4 +1,4 @@
-# Introduction
+# Introduction to Styles
 
 Styles are contained within a single, root JSON object with the following keys:
 

@@ -1,4 +1,4 @@
-# Page Styles
+# Page Styling
 
 {% hint style="info" %}
 **Note**: There is presently no way to have different styles for different pages. If there is sufficient demand for such a feature however, we could add more fine control in future.
@@ -8,9 +8,9 @@ The `page` JSON object, allows you to define a series of styles which apply to t
 
 ## Size
 
-`size` is an optional string property, which allows you to use one of the many supported [page sizes](supported-page-sizes.md). A default value of `"A4"` is assumed when no value is given.
+`size` is an optional string property, which allows you to use one of the many supported [page sizes](page-sizes.md). A default value of `"A4"` is assumed when no value is given.
 
-{% page-ref page="supported-page-sizes.md" %}
+{% page-ref page="page-sizes.md" %}
 
 ```javascript
 {
@@ -84,10 +84,10 @@ Note that we use the [typographic definition of margin](https://en.m.wikipedia.o
 
 ## Other
 
-The following [style expressions](style-expressions.md) are also available for use in page styles:
+The following [KCSS expressions](kcss-expressions.md) are also available for use in page styles:
 
 * Background
 * Borders
 
-{% page-ref page="style-expressions.md" %}
+{% page-ref page="kcss-expressions.md" %}
 

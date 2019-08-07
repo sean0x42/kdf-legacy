@@ -2,7 +2,7 @@
 description: A list of all available "CSS-like" style expressions.
 ---
 
-# Style Expressions
+# KCSS Expressions
 
 ## Introduction
 

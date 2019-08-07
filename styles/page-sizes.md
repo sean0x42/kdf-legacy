@@ -1,4 +1,4 @@
-# Supported Page Sizes
+# Page Sizes
 
 {% hint style="info" %}
 The exact size of these pages \(plus some history and background\) can be found on [papersizes.io](https://papersizes.io).
@@ -20,4 +20,6 @@ The exact size of these pages \(plus some history and background\) can be found 
   * Shiroku ban 6
   * Kiku 4
   * Kiku 5
+
+
 

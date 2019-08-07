@@ -6,20 +6,20 @@
 
 ## Content
 
-* [Introduction](content/introduction.md)
+* [Introduction to Content](content/introduction.md)
 * [Nodes](content/nodes.md)
 * [Elements](content/elements.md)
 
 ## Metadata
 
-* [Introduction](metadata/introduction.md)
+* [Introduction to Metadata](metadata/introduction.md)
 * [Required Fields](metadata/required-fields.md)
 
 ## Styles
 
-* [Introduction](styles/introduction.md)
-* [Page Styles](styles/page-styles.md)
-* [Style Expressions](styles/style-expressions.md)
-* [Supported Page Sizes](styles/supported-page-sizes.md)
+* [Introduction to Styles](styles/introduction.md)
+* [Page Styling](styles/page-styles.md)
+* [Page Sizes](styles/page-sizes.md)
+* [KCSS Expressions](styles/kcss-expressions.md)
 * [Creating Classes](styles/classes.md)
 

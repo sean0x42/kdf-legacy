@@ -169,33 +169,117 @@ d. Blue fish
 
 ## Tables
 
-Tables let you quickly and easily list information in tabular form.
+Tables let you show information in tabular form \(a two dimensional table comprised of rows and columns\).
 
 ```javascript
 {
   "type": "table",
   "children": [
-    { "type": "tableRow", "children": [...] }
-    { "type": "tableRow", "children": [...] }
-    { "type": "tableRow", "children": [...] }
+    { "type": "tableRow", "children": [...] },
+    { "type": "tableRow", "children": [...] },
+    { "type": "tableRow", "children": [...] },
+    { "type": "caption", "children": ["Eye colour by generation"] }
   ]
 }
 ```
 
-### Table Rows
+### Head
+
+The table head element defines a row \(or set of rows\) that describe the columns they're attached to. Table heads are optional elements, but if they are included, they should be the added as the first child of a `table` element, and should be immediately followed by a `tableBody`.
+
+```javascript
+{
+  "type": "table",
+  "children": [
+    {
+      "type": "tableHead",
+      "children": [
+        {
+          "type": "tableRow",
+          "children": [...]
+        }
+      ]
+    },
+    {
+      "type": "tableBody",
+      "children": [...]
+    }
+  ]
+}
+```
+
+Any table content wrapped inside of a table head, may be styled differently to the table body by making use of style classes.
+
+{% page-ref page="../styles/classes.md" %}
+
+### Body
+
+The table body wraps a set of table rows, effectively defining the body of the table.
+
+```javascript
+{
+  "type": "tableBody",
+  "children": [
+    {
+      "type": "tableRow",
+      "children": [...]
+    },
+    ...
+  ]
+}
+```
+
+### Footer
+
+The table footer element allows you to add an extra row \(or rows\) to the bottom of your table to wrap things up. It must be included after a `tableBody`.
+
+```javascript
+{
+  "type": "tableFooter",
+  "children": [...]
+}
+```
+
+### Rows
+
+The row element contains a single row of table cells.
 
 ```javascript
 {
   "type": "tableRow",
   "children": [
-    { "type": "tableCell", "children": [...] }
-    { "type": "tableCell", "children": [...] }
-    { "type": "tableCell", "children": [...] }
+    { "type": "tableCell", "children": [...] },
+    { "type": "tableCell", "children": [...] },
+    ...
   ]
 }
 ```
 
-### Table Cells
+### Column Groups
+
+The optional column group element contains only columns as children. It allows you to apply styles to all cells within the defined columns. This is mostly used as an optimisation technique, to prevent duplicate inline styles appearing on every cell in a column.
+
+#### Columns
+
+Column elements must be contained within a `columnGroup` element, and can span zero or more columns using the `span` attribute.
+
+```javascript
+{
+  "type": "tableColumnGroup",
+  "children": [
+    {
+      "type": "tableColumn",
+      "span": 2,
+      "styles": { ... }
+    },
+    ...
+  ]
+}
+```
+
+### Cells
+
+The cell element represents a single cell within a table. You can also use the optional `colSpan` and `rowSpan` attributes to have a single cell span across multiple rows or columns.
 
 ```javascript
 {
@@ -203,16 +287,20 @@ Tables let you quickly and easily list information in tabular form.
   "children": [
     {
       "type": "tableCell",
+      "rowSpan": 2,
       "children": ["$15.00 AUD"]
     },
     {
       "type": "tableCell",
+      "rowSpan": 2,
       "children": ["$15.60 NZD"]
     },
     {
       "type": "tableCell",
+      "rowSpan": 2,
       "children": ["$10.20 USD"]
-    }
+    },
+    ...
   ]
 }
 ```
