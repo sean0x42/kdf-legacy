@@ -425,3 +425,12 @@ Hints are simple block elements with a little more visual interest than a standa
 }
 ```
 
+The following values are available for the `variant` attribute:
+
+| Value | Description |
+| :--- | :--- |
+| `"information"` | A blue hint, with an info icon. |
+| `"success"` | A green hint, with a success icon. |
+| `"warning"` | An orange hint, with a warning icon. |
+| `"error"` | A red hint, with an error icon. |
+
