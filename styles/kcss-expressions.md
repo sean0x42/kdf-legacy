@@ -53,29 +53,57 @@ Set a border.
 
 Set text colour
 
+```javascript
+{ "color": "hsl(240, 15%, 10%)" }
+```
+
 ### Font Family
 
 Font family
+
+```javascript
+{ "fontFamily": "Inter, sans-serif" }
+```
 
 ### Font Size
 
 Font size
 
+```javascript
+{ "fontSize": "2em" }
+```
+
 ### Font Weight
 
 Font weight
+
+```javascript
+{ "fontWeight": "bold" }
+```
 
 ### Italics
 
 Italics
 
+```javascript
+{ "italic": "true" }
+```
+
 ### Letter Spacing
 
 Letter spacing
 
+```javascript
+{ "letterSpacing": "4%" }
+```
+
 ### Line Height
 
 Line height
+
+```javascript
+{ "lineHeight": "1.5" }
+```
 
 ### Spacing
 
@@ -91,11 +119,29 @@ Line height
 
 Strikethrough
 
+```javascript
+{ "strikethrough": "true" }
+```
+
+### Text Align
+
+```javascript
+{ "textAlign": "left" }
+```
+
 ### Text Transform
 
 Uppercase, lowercase, sentence case, title case
 
+```javascript
+{ "textTransform": "uppercase" }
+```
+
 ### Underline
 
 underline
+
+```javascript
+{ "underline": "true" }
+```
 
