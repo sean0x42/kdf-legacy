@@ -35,7 +35,7 @@ Elements are defined by a single JSON object, containing each of the following k
 | :--- | :--- |
 | `"type"` | Determines the type of element, such as `"heading"`, `"image"` or `"table"`. If you where writing HTML, this would be the tag name. A list of [all available element types ](elements.md)is available on the following page. |
 | `"class"` | An optional style class.  |
-| `"styles"` | An optional list of KCSS expressions, which apply only to this element. These styles will always take precedence over the styles inherited from an element's class. You can view a list of all [available KCSS styles here](../styles/kcss-expressions.md). |
+| `"styles"` | An optional list of KCSS expressions, which apply only to this element. These styles will always take precedence over the styles inherited from an element's class. You can view a list of all [available KCSS styles here](../styles/kcss.md). |
 | `"children"` | A list of child elements.  |
 
 Some element types may also require additional keys.

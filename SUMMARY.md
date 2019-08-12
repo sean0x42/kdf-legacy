@@ -18,8 +18,9 @@
 ## Styles
 
 * [Introduction to Styles](styles/introduction.md)
-* [Page Styling](styles/page-styles.md)
+* [KCSS](styles/kcss.md)
+* [Colour & Gradients](styles/colour-and-gradients.md)
+* [Styling Pages](styles/styling-pages.md)
 * [Page Sizes](styles/page-sizes.md)
-* [KCSS Expressions](styles/kcss-expressions.md)
-* [Creating Classes](styles/classes.md)
+* [Classes](styles/classes.md)
 

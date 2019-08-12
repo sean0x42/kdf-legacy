@@ -1,8 +1,8 @@
-# Creating Classes
+# Classes
 
 Classes are enumerated within a single JSON object, where the keys are unique and identify a single class.
 
-```yaml
+```javascript
 {
   "h1": {
     "display": "Heading 1",
@@ -27,7 +27,7 @@ Classes are enumerated within a single JSON object, where the keys are unique an
 
 A required _human readable_ string, which can be shown to users.
 
-```yaml
+```javascript
 {
   "fig": {
     "display": "Figures & Captions",
@@ -38,9 +38,9 @@ A required _human readable_ string, which can be shown to users.
 
 ## Styles
 
-A required list of [KCSS expressions](kcss-expressions.md), which are enumerated within a JSON object. 
+A required list of [KCSS expressions](kcss.md), which are enumerated within a JSON object. 
 
-```yaml
+```javascript
 {
   "p": {
     "display": "Body Text",
@@ -54,13 +54,13 @@ A required list of [KCSS expressions](kcss-expressions.md), which are enumerated
 }
 ```
 
-{% page-ref page="kcss-expressions.md" %}
+{% page-ref page="kcss.md" %}
 
 ## Inherit
 
 An optional string containing the unique ID of another class, from which to inherit styles from.
 
-```yaml
+```javascript
 {
   "body": {
     "display": "Body Text",
@@ -90,6 +90,21 @@ body,
 
 .headings {
   font-size: 2em;
+}
+```
+
+## Wrapping
+
+{% hint style="warning" %}
+**Warning**: Wrapping is still experimental.
+{% endhint %}
+
+```javascript
+{
+  "h1": {
+    "display": "Heading 1",
+    "wrapAfter": "avoid"
+  }
 }
 ```
 

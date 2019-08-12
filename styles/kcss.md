@@ -2,7 +2,11 @@
 description: A list of all available "CSS-like" style expressions.
 ---
 
-# KCSS Expressions
+# KCSS
+
+{% hint style="danger" %}
+KCSS is still experimental, and won't begin solidifying until we've created the style engine. For now, many of these properties will continue without descriptions.
+{% endhint %}
 
 ## Introduction
 
@@ -22,25 +26,51 @@ In the above example, `"color"` is the property, and `"red"` is the value.
 
 ## Available Properties
 
-The following properties are available for use.
+The following is an exhaustive list of all available KCSS style properties.
 
 ### Background
 
-Set a background image, colour, or gradient.
+The background property defines the appearance of an element's background. The background may be any of the following:
+
+{% tabs %}
+{% tab title="Colours" %}
+You may use any valid [colour format](colour-and-gradients.md).
 
 ```javascript
 { "background": "#FFFFFF" }
 ```
 
-```javascript
-{ "background": "resource://images/XiFasIajw58AAWs.png" }
-```
+{% page-ref page="colour-and-gradients.md" %}
+{% endtab %}
+
+{% tab title="Gradients" %}
+You may use any valid [gradient format](colour-and-gradients.md).
 
 ```javascript
 { "background": "linear-gradient(90deg, blue, red)" }
 ```
 
-### Border
+{% page-ref page="colour-and-gradients.md" %}
+{% endtab %}
+
+{% tab title="Images" %}
+Coming soon.
+
+```javascript
+{ "background": "resource://images/XiFasIajw58AAWs.png" }
+```
+{% endtab %}
+{% endtabs %}
+
+#### Size
+
+Background size allows 
+
+#### Repeat
+
+Background repeat defines how background images should be repeated, if they do not fill the element.
+
+### Borders
 
 Set a border.
 
@@ -104,6 +134,16 @@ Line height
 ```javascript
 { "lineHeight": "1.5" }
 ```
+
+### Opacity
+
+Opacity
+
+```javascript
+{ "opacity": "0.1" }
+```
+
+{% page-ref page="colour-and-gradients.md" %}
 
 ### Spacing
 
