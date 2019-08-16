@@ -337,7 +337,8 @@ Which would render a code block that looks something like this:
 {% code-tabs %}
 {% code-tabs-item title="players\_controller.rb" %}
 ```ruby
-# Paginated list of players
+# Paginated list of players
+
 def index
   @players = Player.order(score: :desc).page(params[:page])
 end
@@ -361,9 +362,9 @@ Hints are simple block elements with a little more visual interest than a standa
     {
       "type": "span",
       "styles": { "fontWeight": "bold", "color": "#111" },
-      "children": "Hint: "
+      "children": ["Hint:"]
     },
-    "You can use hints to create heirarchy in your documents"
+    " You can use hints to create heirarchy in your documents"
   ]
 }
 ```
