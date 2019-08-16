@@ -183,63 +183,6 @@ Tables let you show information in tabular form \(a two dimensional table compri
 }
 ```
 
-### Head
-
-The table head element defines a row \(or set of rows\) that describe the columns they're attached to. Table heads are optional elements, but if they are included, they should be the added as the first child of a `table` element, and should be immediately followed by a `tableBody`.
-
-```javascript
-{
-  "type": "table",
-  "children": [
-    {
-      "type": "tableHead",
-      "children": [
-        {
-          "type": "tableRow",
-          "children": [...]
-        }
-      ]
-    },
-    {
-      "type": "tableBody",
-      "children": [...]
-    }
-  ]
-}
-```
-
-Any table content wrapped inside of a table head, may be styled differently to the table body by making use of style classes.
-
-{% page-ref page="../styles/classes.md" %}
-
-### Body
-
-The table body wraps a set of table rows, effectively defining the body of the table.
-
-```javascript
-{
-  "type": "tableBody",
-  "children": [
-    {
-      "type": "tableRow",
-      "children": [...]
-    },
-    ...
-  ]
-}
-```
-
-### Footer
-
-The table footer element allows you to add an extra row \(or rows\) to the bottom of your table to wrap things up. It must be included after a `tableBody`.
-
-```javascript
-{
-  "type": "tableFooter",
-  "children": [...]
-}
-```
-
 ### Rows
 
 The row element contains a single row of table cells.
