@@ -53,36 +53,81 @@ Spans allow you to apply formatting to text inline, without affecting the layout
 
 ## Lists
 
-A bulleted or numbered list element. Lists must be either ordered or unordered, which affects the types of bullets that are available.
+A bulleted or numbered list element. 
 
 ```javascript
 {
   "type": "list",
-  "cycle": [
-    {
-      "variant": "lowerRoman",
-      "suffix": "."
-    },
-    {
-      "variant": "lowerGreek",
-      "suffix": "."
-    },
+  "bulletCycle": [
+    { "variant": "lowerRoman", "suffix": "." },
+    { "variant": "lowerGreek", "suffix": "." },
     "filledCircle",
   ],
-  "children": [...]
+  "children": [
+    {
+      "type": "listItem",
+      "children": [
+        "Level 1",
+        {
+          "type": "list",
+          "children": [...]
+        }
+      ]
+    }
+  ]
 }
 ```
 
-```javascript
+The above mark-up should produce the following list:
+
+```text
 i. Level 1
-  α. Level 2
+  α. Level 2 (Nested list)
     • Level 3
-      i. Level 4 (Wraps around)
+      i. Level 4 (Note how the bullet wraps around to beginning of the cycle)
+ii. Another list item
 ```
 
-### Ordered Lists
+### Bullet Cycle
 
-The following variants for an ordered list are available \(with potentially more to come\):
+List bullet styles follow a sequence called a _cycle_. 
+
+List and list item element may define their own bullets, and ignore the overall cycle. 
+
+### Bullets
+
+Bullets are defined as either a `"variant"`...
+
+```javascript
+{
+  "variant": "decimal",
+  "suffix": "."
+}
+```
+
+...a `"string"`...
+
+```javascript
+{
+  "prefix": "[",
+  "string": "•",
+  "suffix": "]"
+}
+```
+
+...or an `"image"`
+
+```javascript
+{
+  "image": "resource://images/DUgZaK3RO1iG499.png"
+}
+```
+
+Bullets may also optional have a prefix and suffix, which can contain any string.
+
+### Numbering Variants
+
+The following variants for an ordered list are available:
 
 | Variant | Example |
 | :--- | :--- |
@@ -95,19 +140,9 @@ The following variants for an ordered list are available \(with potentially more
 | `"lowerLatin"` | a, b, c, d, e, f, etc. |
 | `"upperLatin"` | A, B, C, D, E, F, etc. |
 
-### Unordered Lists
+### Bullet Variants
 
-Unordered lists may define either a `"variant"`, `"string"` or an `"image"`. Defining a string allows you to use an Unicode character you like as the bullet.
-
-```javascript
-{
-  "type": "list",
-  "ordered": false,
-  "string": "×"
-}
-```
-
-You may instead use any one of the following variants:
+The following variants are available for bullets:
 
 | Variant | Preview |
 | :--- | :--- |
@@ -116,42 +151,6 @@ You may instead use any one of the following variants:
 | `"filledSquare"` | ▪ A filled square |
 | `"hollowSquare"` | ▫ A hollow square |
 
-Or an image/SVG, using it's resource URI:
-
-```javascript
-{
-  "type": "list",
-  "ordered": false,
-  "image": "resource://images/DUgZaK3RO1iG499.png"
-}
-```
-
-{% hint style="warning" %}
-**Warning**: Resource URIs are experimental and very liable to change.
-{% endhint %}
-
-### Prefixes and Suffixes
-
-Lists may define a `"prefix"` and `"suffix"` string if they wish, to be appended to the beginning and end of the bullet respectively. For example:
-
-```javascript
-{
-  "type": "list",
-  "prefix": "~",
-  "suffix": "~",
-  "ordered": false,
-  "string": "*"
-}
-```
-
-This will generate a list that looks something like this:
-
-```text
-~*~ Item one
-~*~ Item two
-~*~ Item three
-```
-
 ### List Items
 
 List items may have their own defined bullet character/symbol. When this is specified, the custom bullet is used instead of the parent's bullet.
@@ -159,15 +158,16 @@ List items may have their own defined bullet character/symbol. When this is spec
 ```javascript
 {
   "type": "list",
-  "ordered": "true",
-  "suffix": ".",
-  "variant": "lowerLatin",
+  "bullet": { "variant": "lowerLatin", "suffix": "." },
   "children": [
     { "type": "listItem", "children": ["One fish"] },
     { "type": "listItem", "children": ["Two fish"] },
     {
       "type": "listItem",
-      "string": "*",
+      "bullet": {
+        "string": "*",
+        "suffix": "."
+      },
       "children": ["Red fish"]
     },
     { "type": "listItem", "children": ["Blue fish"] }
