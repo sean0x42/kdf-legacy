@@ -20,16 +20,17 @@ Captions may be used to label images, tables, and other block content.
 
 ## Code
 
-KDF provides two main elements for representing code in your document: inline code and code blocks;
-
-### Inline Code
-
 Inline code provides no syntax highlighting—although the user may add their own emphasis by adjusting the appearance of the text.
 
 ```javascript
 {
-  "type": "code",
-  "children": ["println!(\"Hello world\")"]
+  "type": "paragraph",
+  "children": [
+    "You can always use the ",
+    { "type": "code", "children": ["println!"] },
+    " macro to print a string to the console. e.g. ",
+    { "type": "code", "children": ["println!(\"Hello world\")"] }
+  ]
 }
 ```
 
@@ -37,7 +38,8 @@ When used in context, the above sample would look something like this:
 
 > You can always use the `println!` macro to print a string to the console. e.g. `println!("Hello world")`.
 
-### Code Blocks
+
+## Code Blocks
 
 Code blocks allow document authors to show a larger portion of their code, and make full use of syntax highlighting for supported languages.
 
@@ -89,9 +91,9 @@ A simple section heading. You must also define the heading `"level"`, which shou
 
 
 
-## Hints
+## Hints (Callouts)
 
-Hints are simple block elements with a little more visual interest than a standard paragraph, helping them to stand out a little.
+Hints, also known as callouts, are simple block elements with a little more visual interest than a standard paragraph, helping them to stand out against body text.
 
 ```javascript
 {
@@ -267,7 +269,9 @@ The following variants are available for bullets:
 | `"filledSquare"` | ▪ A filled square |
 | `"hollowSquare"` | ▫ A hollow square |
 
-### List Items
+
+
+## List Items
 
 List items may have their own defined bullet character/symbol. When this is specified, the custom bullet is used instead of the parent's bullet.
 
@@ -314,6 +318,7 @@ Basic body text. Paragraphs do not have any special keys.
 }
 ```
 
+
 ## Spans
 
 Spans are simple elements which allow you to apply inline formatting to text.
@@ -359,44 +364,7 @@ Tables let you show information in tabular form \(a two dimensional table compri
 }
 ```
 
-### Rows
-
-The row element contains a single row of table cells.
-
-```javascript
-{
-  "type": "tableRow",
-  "children": [
-    { "type": "tableCell", "children": [...] },
-    { "type": "tableCell", "children": [...] },
-    ...
-  ]
-}
-```
-
-### Column Groups
-
-The optional column group element contains only columns as children. It allows you to apply styles to all cells within the defined columns. This is mostly used as an optimisation technique, to prevent duplicate inline styles appearing on every cell in a column.
-
-#### Columns
-
-Column elements must be contained within a `columnGroup` element, and can span zero or more columns using the `span` attribute.
-
-```javascript
-{
-  "type": "tableColumnGroup",
-  "children": [
-    {
-      "type": "tableColumn",
-      "span": 2,
-      "styles": { ... }
-    },
-    ...
-  ]
-}
-```
-
-### Cells
+## Table Cells
 
 The cell element represents a single cell within a table. You can also use the optional `colSpan` and `rowSpan` attributes to have a single cell span across multiple rows or columns.
 
@@ -418,6 +386,43 @@ The cell element represents a single cell within a table. You can also use the o
       "type": "tableCell",
       "rowSpan": 2,
       "children": ["$10.20 USD"]
+    },
+    ...
+  ]
+}
+```
+
+## Table Rows
+
+The row element contains a single row of table cells.
+
+```javascript
+{
+  "type": "tableRow",
+  "children": [
+    { "type": "tableCell", "children": [...] },
+    { "type": "tableCell", "children": [...] },
+    ...
+  ]
+}
+```
+
+## Table Column Groups
+
+The optional column group element contains only columns as children. It allows you to apply styles to all cells within the defined columns. This is mostly used as an optimisation technique, to prevent duplicate inline styles appearing on every cell in a column.
+
+### Table Columns
+
+Column elements must be contained within a `columnGroup` element, and can span zero or more columns using the `span` attribute.
+
+```javascript
+{
+  "type": "tableColumnGroup",
+  "children": [
+    {
+      "type": "tableColumn",
+      "span": 2,
+      "styles": { ... }
     },
     ...
   ]
