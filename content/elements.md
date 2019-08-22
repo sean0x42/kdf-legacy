@@ -15,22 +15,7 @@ You can create a blockquote with the following markup:
 ```javascript
 {
   "type": "quote",
-  "class": "quote"
-  "children": [
-    "...we show how a 19hz standing air wave may under certain conditions create sensory phenomena suggestive of a ghost...",
-    {
-      "type": "span",
-      "class": "quoteAttribution",
-      "children": [
-        "Vic Tandy & Tony R. Lawrence, 1998. ",
-        {
-          "type": "hyperlink",
-          "href": "http://www.richardwiseman.com/resources/ghost-in-machine.pdf",
-          "children": ["The Ghost in the Machine"]
-        }
-      ]
-    }
-  ]
+  "children": [...]
 }
 ```
 
