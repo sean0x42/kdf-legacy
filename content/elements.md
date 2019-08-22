@@ -1,5 +1,78 @@
 # Elements
 
+This section lists all available KDF elements in alphabetical order.
+
+
+
+## Captions
+
+Captions may be used to label images, tables, and other block content.
+
+```javascript
+{
+  "type": "caption",
+  "children": ["Two-spiral task visualised with keras"]
+}
+```
+
+
+
+
+## Code
+
+KDF provides two main elements for representing code in your document: inline code and code blocks;
+
+### Inline Code
+
+Inline code provides no syntax highlighting—although the user may add their own emphasis by adjusting the appearance of the text.
+
+```javascript
+{
+  "type": "code",
+  "children": ["println!(\"Hello world\")"]
+}
+```
+
+When used in context, the above sample would look something like this:
+
+> You can always use the `println!` macro to print a string to the console. e.g. `println!("Hello world")`.
+
+### Code Blocks
+
+Code blocks allow document authors to show a larger portion of their code, and make full use of syntax highlighting for supported languages.
+
+```javascript
+{
+  "type": "codeBlock",
+  "language": "ruby",
+  "lineNumbers": true,
+  "fileName": "players_controller.rb",
+  "children": ["# Paginated list of players\ndef index\n  @players = Player.order(score: desc).page(params[:page])\nend"]
+}
+```
+
+Which would render a code block that looks something like this:
+
+{% code-tabs %}
+{% code-tabs-item title="players\_controller.rb" %}
+```ruby
+# Paginated list of players
+
+def index
+  @players = Player.order(score: :desc).page(params[:page])
+end
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+{% hint style="info" %}
+**Note**: If no `"language"` is defined, `"plain text"` is assumed. This will allow users to manually apply their own formatting easily if required.
+{% endhint %}
+
+
+
+
+
 ## Headings
 
 A simple section heading. You must also define the heading `"level"`, which should be an integer from 1 to 6.
@@ -13,43 +86,86 @@ A simple section heading. You must also define the heading `"level"`, which shou
 }
 ```
 
-## Paragraphs
 
-Basic body text. Paragraphs do not have any special keys.
 
-```javascript
-{
-  "type": "paragraph",
-  "class": "body",
-  "styles": {},
-  "children": ["All their equipment and instruments are alive."]
-}
-```
 
-## Spans
+## Hints
 
-Spans allow you to apply formatting to text inline, without affecting the layout of the page. Document authors should never really be aware of the existence of these elements.
+Hints are simple block elements with a little more visual interest than a standard paragraph, helping them to stand out a little.
 
 ```javascript
 {
-  "type": "paragraph",
-  "class": "body",
+  "type": "hint",
+  "variant": "information",
   "children": [
-    "Spans are actually ",
     {
       "type": "span",
-      "styles": {
-        "color": "blue",
-        "underline": "true",
-        "italic": "true",
-        "fontWeight": "bold"
-      },
-      "children": ["super useful"]
+      "styles": { "fontWeight": "bold", "color": "#111" },
+      "children": ["Hint:"]
     },
-    " because they provide you with total control over the appearance of inline text."
+    " You can use hints to create heirarchy in your documents"
   ]
 }
 ```
+
+The following values are available for the `variant` attribute:
+
+| Value | Description |
+| :--- | :--- |
+| `"information"` | A blue hint, with an info icon. |
+| `"success"` | A green hint, with a success icon. |
+| `"warning"` | An orange hint, with a warning icon. |
+| `"error"` | A red hint, with an error icon. |
+
+
+
+
+
+## Hyperlinks
+
+Hyperlinks allow document authors to link to external content. Hyperlinks are not restricted to web-based documents, and may use any of the following protocols:
+
+* `https:`
+* `http:`
+* `mailto:`
+* `file:`
+
+```javascript
+{
+  "type": "link",
+  "href": "https://seanbailey.io",
+  "children": ["seanbailey.io"]
+}
+```
+
+
+
+
+## Images
+
+Images are currently experimental. Here's what the mark-up may look like in future:
+
+```javascript
+{
+  "type": "image",
+  "viewPort": "100 0 200 0",
+  "alt": "A Red-tailed Black Cockatoo (Calyptorhynchus banksii)"
+  "source": "resource://images/YjTFCztRqj4QjSI.jpg",
+  "children": [
+    {
+      "type": "caption",
+      "children": ["A Red-tailed Black Cockatoo (Calyptorhynchus banksii)"]
+    }
+  ]
+}
+```
+
+{% hint style="warning" %}
+**Warning**: Resource URIs are experimental and very liable to change.
+{% endhint %}
+
+
+
 
 ## Lists
 
@@ -184,6 +300,49 @@ b. Two fish
 d. Blue fish
 ```
 
+
+## Paragraphs
+
+Basic body text. Paragraphs do not have any special keys.
+
+```javascript
+{
+  "type": "paragraph",
+  "class": "body",
+  "styles": {},
+  "children": ["All their equipment and instruments are alive."]
+}
+```
+
+## Spans
+
+Spans are simple elements which allow you to apply inline formatting to text.
+
+{% hint style="info" %}
+Document authors should never really be aware of the existence of span elements. They are simply a means of wrapping styles around text nodes.
+{% endhint %}
+
+```javascript
+{
+  "type": "paragraph",
+  "class": "body",
+  "children": [
+    "Spans are actually ",
+    {
+      "type": "span",
+      "styles": {
+        "color": "blue",
+        "underline": "true",
+        "italic": "true",
+        "fontWeight": "bold"
+      },
+      "children": ["super useful"]
+    },
+    " because they provide you with total control over the appearance of inline text."
+  ]
+}
+```
+
 ## Tables
 
 Tables let you show information in tabular form \(a two dimensional table comprised of rows and columns\).
@@ -264,134 +423,3 @@ The cell element represents a single cell within a table. You can also use the o
   ]
 }
 ```
-
-## Images
-
-Images are currently experimental. Here's what the mark-up may look like in future:
-
-```javascript
-{
-  "type": "image",
-  "viewPort": "100 0 200 0",
-  "alt": "A Red-tailed Black Cockatoo (Calyptorhynchus banksii)"
-  "source": "resource://images/YjTFCztRqj4QjSI.jpg",
-  "children": [
-    {
-      "type": "caption",
-      "children": ["A Red-tailed Black Cockatoo (Calyptorhynchus banksii)"]
-    }
-  ]
-}
-```
-
-{% hint style="warning" %}
-**Warning**: Resource URIs are experimental and very liable to change.
-{% endhint %}
-
-## Captions
-
-Captions may be used to label images, tables, and other block content.
-
-```javascript
-{
-  "type": "caption",
-  "children": ["Two-spiral task visualised with keras"]
-}
-```
-
-## Hyperlinks
-
-Hyperlinks allow document authors to link to external content. Hyperlinks are not restricted to web-based documents, and may use any of the following protocols:
-
-* `https:`
-* `http:`
-* `mailto:`
-* `file:`
-
-```javascript
-{
-  "type": "link",
-  "href": "https://seanbailey.io",
-  "children": ["seanbailey.io"]
-}
-```
-
-## Code
-
-KDF provides two main elements for representing code in your document: inline code and code blocks;
-
-### Inline Code
-
-Inline code provides no syntax highlighting—although the user may add their own emphasis by adjusting the appearance of the text.
-
-```javascript
-{
-  "type": "code",
-  "children": ["println!(\"Hello world\")"]
-}
-```
-
-When used in context, the above sample would look something like this:
-
-> You can always use the `println!` macro to print a string to the console. e.g. `println!("Hello world")`.
-
-### Code Blocks
-
-Code blocks allow document authors to show a larger portion of their code, and make full use of syntax highlighting for supported languages.
-
-```javascript
-{
-  "type": "codeBlock",
-  "language": "ruby",
-  "lineNumbers": true,
-  "fileName": "players_controller.rb",
-  "children": ["# Paginated list of players\ndef index\n  @players = Player.order(score: desc).page(params[:page])\nend"]
-}
-```
-
-Which would render a code block that looks something like this:
-
-{% code-tabs %}
-{% code-tabs-item title="players\_controller.rb" %}
-```ruby
-# Paginated list of players
-
-def index
-  @players = Player.order(score: :desc).page(params[:page])
-end
-```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
-
-{% hint style="info" %}
-**Note**: If no `"language"` is defined, `"plain text"` is assumed. This will allow users to manually apply their own formatting easily if required.
-{% endhint %}
-
-## Hints
-
-Hints are simple block elements with a little more visual interest than a standard paragraph, helping them to stand out a little.
-
-```javascript
-{
-  "type": "hint",
-  "variant": "information",
-  "children": [
-    {
-      "type": "span",
-      "styles": { "fontWeight": "bold", "color": "#111" },
-      "children": ["Hint:"]
-    },
-    " You can use hints to create heirarchy in your documents"
-  ]
-}
-```
-
-The following values are available for the `variant` attribute:
-
-| Value | Description |
-| :--- | :--- |
-| `"information"` | A blue hint, with an info icon. |
-| `"success"` | A green hint, with a success icon. |
-| `"warning"` | An orange hint, with a warning icon. |
-| `"error"` | A red hint, with an error icon. |
-
