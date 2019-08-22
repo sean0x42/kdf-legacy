@@ -3,8 +3,40 @@
 This section lists all available KDF elements in alphabetical order.
 
 
+## Block Quote
 
-## Captions
+A block quote allows you to clearly outline an extract from another source.
+
+> ...we show how a 19hz standing air wave may under certain conditions create sensory phenomena suggestive of a ghost...  
+> —_Vic Tandy & Tony R. Lawrence, 1998. [The Ghost in the Machine](http://www.richardwiseman.com/resources/ghost-in-machine.pdf)_
+
+You can create a blockquote with the following markup:
+
+```javascript
+{
+  "type": "quote",
+  "class": "quote"
+  "children": [
+    "...we show how a 19hz standing air wave may under certain conditions create sensory phenomena suggestive of a ghost...",
+    {
+      "type": "span",
+      "class": "quoteAttribution",
+      "children": [
+        "Vic Tandy & Tony R. Lawrence, 1998. ",
+        {
+          "type": "hyperlink",
+          "href": "http://www.richardwiseman.com/resources/ghost-in-machine.pdf",
+          "children": ["The Ghost in the Machine"]
+        }
+      ]
+    }
+  ]
+}
+```
+
+
+
+## Caption
 
 Captions may be used to label images, tables, and other block content.
 
@@ -39,7 +71,7 @@ When used in context, the above sample would look something like this:
 > You can always use the `println!` macro to print a string to the console. e.g. `println!("Hello world")`.
 
 
-## Code Blocks
+## Code Block
 
 Code blocks allow document authors to show a larger portion of their code, and make full use of syntax highlighting for supported languages.
 
@@ -75,7 +107,7 @@ end
 
 
 
-## Headings
+## Heading
 
 A simple section heading. You must also define the heading `"level"`, which should be an integer from 1 to 6.
 
@@ -91,7 +123,7 @@ A simple section heading. You must also define the heading `"level"`, which shou
 
 
 
-## Hints (Callouts)
+## Hint (Callout)
 
 Hints, also known as callouts, are simple block elements with a little more visual interest than a standard paragraph, helping them to stand out against body text.
 
@@ -123,7 +155,7 @@ The following values are available for the `variant` attribute:
 
 
 
-## Hyperlinks
+## Hyperlink
 
 Hyperlinks allow document authors to link to external content. Hyperlinks are not restricted to web-based documents, and may use any of the following protocols:
 
@@ -143,7 +175,7 @@ Hyperlinks allow document authors to link to external content. Hyperlinks are no
 
 
 
-## Images
+## Image
 
 Images are currently experimental. Here's what the mark-up may look like in future:
 
@@ -169,7 +201,7 @@ Images are currently experimental. Here's what the mark-up may look like in futu
 
 
 
-## Lists
+## List
 
 A bulleted or numbered list element. 
 
@@ -271,7 +303,7 @@ The following variants are available for bullets:
 
 
 
-## List Items
+## List Item
 
 List items may have their own defined bullet character/symbol. When this is specified, the custom bullet is used instead of the parent's bullet.
 
@@ -305,7 +337,7 @@ d. Blue fish
 ```
 
 
-## Paragraphs
+## Paragraph
 
 Basic body text. Paragraphs do not have any special keys.
 
@@ -319,7 +351,7 @@ Basic body text. Paragraphs do not have any special keys.
 ```
 
 
-## Spans
+## Span
 
 Spans are simple elements which allow you to apply inline formatting to text.
 
@@ -348,7 +380,7 @@ Document authors should never really be aware of the existence of span elements.
 }
 ```
 
-## Tables
+## Table
 
 Tables let you show information in tabular form \(a two dimensional table comprised of rows and columns\).
 
@@ -364,7 +396,7 @@ Tables let you show information in tabular form \(a two dimensional table compri
 }
 ```
 
-## Table Cells
+## Table Cell
 
 The cell element represents a single cell within a table. You can also use the optional `colSpan` and `rowSpan` attributes to have a single cell span across multiple rows or columns.
 
@@ -392,7 +424,7 @@ The cell element represents a single cell within a table. You can also use the o
 }
 ```
 
-## Table Rows
+## Table Row
 
 The row element contains a single row of table cells.
 
@@ -407,11 +439,11 @@ The row element contains a single row of table cells.
 }
 ```
 
-## Table Column Groups
+## Table Column Group
 
 The optional column group element contains only columns as children. It allows you to apply styles to all cells within the defined columns. This is mostly used as an optimisation technique, to prevent duplicate inline styles appearing on every cell in a column.
 
-### Table Columns
+### Table Column
 
 Column elements must be contained within a `columnGroup` element, and can span zero or more columns using the `span` attribute.
 
