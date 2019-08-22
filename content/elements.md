@@ -58,9 +58,26 @@ A bulleted or numbered list element. Lists must be either ordered or unordered, 
 ```javascript
 {
   "type": "list",
-  "ordered": true,
-  "variant": "lowerRoman"
+  "cycle": [
+    {
+      "variant": "lowerRoman",
+      "suffix": "."
+    },
+    {
+      "variant": "lowerGreek",
+      "suffix": "."
+    },
+    "filledCircle",
+  ],
+  "children": [...]
 }
+```
+
+```javascript
+i. Level 1
+  α. Level 2
+    • Level 3
+      i. Level 4 (Wraps around)
 ```
 
 ### Ordered Lists
@@ -80,7 +97,7 @@ The following variants for an ordered list are available \(with potentially more
 
 ### Unordered Lists
 
-Unordered lists may define either a `"variant"`, `"string"` or an `"image"`. Defining a string allows you to use an Unicode character you like as the bullet. 
+Unordered lists may define either a `"variant"`, `"string"` or an `"image"`. Defining a string allows you to use an Unicode character you like as the bullet.
 
 ```javascript
 {
@@ -305,7 +322,7 @@ KDF provides two main elements for representing code in your document: inline co
 
 ### Inline Code
 
-Inline code provides no syntax highlighting—although the user may add their own emphasis by adjusting the appearance of the text. 
+Inline code provides no syntax highlighting—although the user may add their own emphasis by adjusting the appearance of the text.
 
 ```javascript
 {
