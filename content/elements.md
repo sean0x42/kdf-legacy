@@ -186,37 +186,104 @@ Images are currently experimental. Here's what the mark-up may look like in futu
 
 
 
-## List
+## `list`
 
-A bulleted or numbered list element. 
+A bulleted or numbered `list`, which enumerates zero or more `listItem`s. Sample markup follows.
 
 ```javascript
 {
   "type": "list",
-  "bullet": {
-    "variant": "filledBullet"
-  },
+  "bullet": { "variant": "filledBullet" },
   "children": [
-    { "type": "listItem", "children": [...] },
-    ...
+    { "type": "listItem", "children": ["One fish"] },
+    { "type": "listItem", "children": ["Two fish"] },
+    { "type": "listItem", "children": ["Red fish"] },
+    { "type": "listItem", "children": ["Blue fish"] }
   ]
 }
 ```
 
-Which produces:
+After rendering this list, you would get something like the following:
 
 ```
 • One fish
 • Two fish
-• Etc.
+• Red fish
+• Blue fish
+```
+
+### `bullet`
+
+{% hint style="info" %}
+**Note**: The term _bullet_ is used interchangeably throughout this section to refer to both bullets and numbering. 
+{% endhint %}
+
+The `bullet` attribute defines the appearance of the list's bullets or numbering. A bullet must have one—and only one—of the following attributes:
+
+| Attribute | Description |
+| :--- | :--- |
+| `char` | A unicode character. e.g. `'>'` |
+| `variant` | One of the many available variants. See [Numbering Variants](#numbering-variants) and [Bullet Variants](#bullet-variants). |
+| `image` | A resource URI which points to an image |
+
+If a bullet is not defined for a list, then the document renderer will search for an appropriate [bullet cycle](#bulletcycle), and use the matching bullet definition.
+
+
+#### `prefix`
+
+The `prefix` attribute defines a single unicode character that will appear before the bullet.
+
+```javascript
+{
+  "variant": "lowerLatin",
+  "prefix": "-"
+}
+```
+
+```
+-a Each letter in this list is immediately prefixed by a '-' character.
+-b You can use the prefix attribute in conjunction with the suffix attribute...
+-c ...to create some interesting looking bullets.
+```
+
+#### `suffix`
+
+The `suffix` attribute defines a single unicode character that will appear after the bullet.
+
+```javascript
+{
+  "variant": "decimal",
+  "suffix": "."
+}
+```
+
+```
+1. A dot is added to each list item
+2. Thanks to the suffix attribute.
 ```
 
 
+#### `startIndex`
+
+A non-negative integer (>= 0), defining where numbering for an ordered list should begin.
+
+```javascript
+{
+  "variant": "decimal",
+  "suffix": ".",
+  "startIndex": 5
+}
+```
+
+```
+5. First item
+6. Second item
+```
 
 
-### Bullet Cycle
+### `bulletCycle`
 
-Nested lists follow a sequence called a _bullet cycle_, where each level of nesting moves one position further in the cycle. When we reach the end, we wrap around to the beginning again. In other words, the first level of lists follows the first bullet definition, the second follows the second, and so on. Until eventually the cycle wraps around to the start again.
+Nested lists follow a sequence called a _bullet cycle_, where each level of nesting moves one position further in the cycle. When the end is reached, the current bullet wraps around to the beginning again.
 
 ```
 {
@@ -224,7 +291,7 @@ Nested lists follow a sequence called a _bullet cycle_, where each level of nest
   "bulletCycle": [
     { "variant": "lowerRoman", "suffix": "." },
     { "variant": "lowerGreek", "suffix": "." },
-    "filledBullet",
+    { "variant": "filledBullet" }
   ],
   "children": [...]
 }
@@ -240,99 +307,40 @@ i. Level 1
 ii. Another list item
 ```
 
-The `"bulletCycle"` attribute applies to all nested lists, unless a nested list has defined its own `"bullet"`—in wich case that list will ignore the overall cycle, but the cycle will continue to apply to any other nested lists.
-
-
-### Bullets
-
-Bullets are defined as either a `"variant"`...
-
-```javascript
-{
-  "variant": "decimal",
-  "suffix": "."
-}
-```
-
-...a `"string"`...
-
-```javascript
-{
-  "prefix": "[",
-  "string": "•",
-  "suffix": "]"
-}
-```
-
-...or an `"image"`
-
-```javascript
-{
-  "image": "resource://images/DUgZaK3RO1iG499.png"
-}
-```
-
-Bullets may also optional have a `"prefix"` and `"suffix"`, which can contain any string. 
-
-### Numbering Variants
-
-The following variants for an ordered list are available:
-
-| Variant | Example |
-| :--- | :--- |
-| `"decimal"` | 1, 2, 3, 4, 5, 6, etc. |
-| `"decimalLeadingZero"` | 01, 02, 03, 04, 05, 06, etc. |
-| `"lowerRoman"` | i, ii, iii, iv, v, vi, etc. |
-| `"upperRoman"` | I, II, III, IV, V, VI, etc. |
-| `"lowerGreek"` | α, β, γ, δ, ε, ζ, etc. |
-| `"upperGreek"` | Α, Β, Γ, Δ, Ε, Ζ, etc. |
-| `"lowerLatin"` | a, b, c, d, e, f, etc. |
-| `"upperLatin"` | A, B, C, D, E, F, etc. |
-
-### Bullet Variants
-
-The following variants are available for bullets:
-
-| Variant | Preview |
-| :--- | :--- |
-| `"filledBullet"` | • A filled circle |
-| `"hollowBullet"` | ◦ A hollow circle |
-| `"filledSquare"` | ▪ A filled square |
-| `"hollowSquare"` | ▫ A hollow square |
+The `bulletCycle` attribute applies to all nested lists, unless a nested list has defined its own `"bullet"`—in wich case that list will ignore the overall cycle.
 
 
 
-## List Item
+## `listItem`
 
-List items may have their own defined bullet character/symbol. When this is specified, the custom bullet is used instead of the parent's bullet.
+A `listItem` represents a single entry within a larger `list`. 
 
 ```javascript
 {
   "type": "list",
   "bullet": { "variant": "lowerLatin", "suffix": "." },
   "children": [
-    { "type": "listItem", "children": ["One fish"] },
-    { "type": "listItem", "children": ["Two fish"] },
     {
       "type": "listItem",
-      "bullet": {
-        "string": "*",
-        "suffix": "."
-      },
-      "children": ["Red fish"]
-    },
-    { "type": "listItem", "children": ["Blue fish"] }
+      "children": ["Hello world!"]
+    }
   ]
 }
 ```
 
-Which would produce the following effect:
+### `bullet`
 
-```text
-a. One fish
-b. Two fish
-*. Red fish
-d. Blue fish
+The optional `bullet` attribute allows a list item to override the bullet of its parent `list`.
+
+```javascript
+{
+  "type": "listItem",
+  "bullet": {
+    "char": "*",
+    "suffix": "."
+  },
+  "children": ["Red fish"]
+}
 ```
 
 
