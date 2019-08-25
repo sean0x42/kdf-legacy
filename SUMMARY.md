@@ -9,6 +9,7 @@
 * [Introduction to Content](content/introduction.md)
 * [Nodes](content/nodes.md)
 * [Elements](content/elements.md)
+* [Bullets & Numbering](content/bullets-and-numbering.md)
 
 ## Metadata
 
