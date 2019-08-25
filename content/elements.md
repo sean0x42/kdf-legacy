@@ -3,41 +3,64 @@
 This section lists all available KDF elements in alphabetical order.
 
 
-## Block Quote
+## `blockQuote`
 
-A block quote allows you to clearly outline an extract from another source.
+A `blockQuote` allows you to clearly outline an extract from another source. e.g.
 
 > ...we show how a 19hz standing air wave may under certain conditions create sensory phenomena suggestive of a ghost...  
 > —_Vic Tandy & Tony R. Lawrence, 1998. [The Ghost in the Machine](http://www.richardwiseman.com/resources/ghost-in-machine.pdf)_
 
-You can create a blockquote with the following markup:
-
 ```javascript
 {
-  "type": "quote",
-  "children": [...]
+  "type": "blockQuote",
+  "children": [
+    "...we show how a 19hz standing air wave may under certain conditions create sensory phenomena suggestive of a ghost...",
+    {
+      "type": "blockQuoteAttribution",
+      "children": [
+        "Vic Tandy & Tony R. Lawrence, 1998. ",
+        {
+          "type": "hyperlink",
+          "href": "http://www.richardwiseman.com/resources/ghost-in-the-machine.pdf",
+          "children": ["The Ghost in the Machine"]
+        }
+      ]
+    }
+  ]
 }
 ```
 
+## `blockQuoteAttribution`
+
+The `blockQuoteAttribution` element must be a top level child of a `blockQuote` element. It gives proper attribution to the author, or authors, of external content. For example usage, see [`blockQuote`](#blockquote).
 
 
-## Caption
 
-Captions may be used to label images, tables, and other block content.
+## `caption`
+
+The `caption` element is used to label images, tables, and other block content.
 
 ```javascript
 {
-  "type": "caption",
-  "children": ["Two-spiral task visualised with keras"]
+  "type": "image",
+  "source": "resource://images/red-tailed-black-cockatoo.png",
+  "alt": "A red tailed black cockatoo.",
+  "children": [
+    { "type": "caption", "children": ["A red tailed black cockatoo."] }
+  ]
 }
 ```
 
+{% hint style="info" %}
+Captions are the only valid children of an image.
+{% endhint %}
 
 
 
-## Code
 
-Inline code provides no syntax highlighting—although the user may add their own emphasis by adjusting the appearance of the text.
+## `code`
+
+Inline `code` provides no syntax highlighting—although the user may add their own emphasis by adjusting the appearance of the text.
 
 ```javascript
 {
@@ -56,7 +79,7 @@ When used in context, the above sample would look something like this:
 > You can always use the `println!` macro to print a string to the console. e.g. `println!("Hello world")`.
 
 
-## Code Block
+## `codeBlock`
 
 Code blocks allow document authors to show a larger portion of their code, and make full use of syntax highlighting for supported languages.
 
@@ -84,17 +107,26 @@ end
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-{% hint style="info" %}
-**Note**: If no `"language"` is defined, `"plain text"` is assumed. This will allow users to manually apply their own formatting easily if required.
-{% endhint %}
+
+### `language`
+
+The `language` attribute defines the programming language that is used within the code block. Doing so allows the syntax highlighting engine to apply the correct formatting. If no `language` is defined, a value of`"plain text"` is assumed.
+
+
+### `lineNumbers`
+
+The optional `lineNumbers` attribute determines whether line numbers should be drawn. If the attribute is not defined, then line numbers are shown, unless the code block is only one line tall.
+
+
+### `fileName`
+
+The optional `fileName` attribute adds the name of the file at the top of the code block. 
 
 
 
+## `heading`
 
-
-## Heading
-
-A simple section heading. You must also define the heading `"level"`, which should be an integer from 1 to 6.
+A simple section `heading`.
 
 ```javascript
 {
@@ -105,12 +137,14 @@ A simple section heading. You must also define the heading `"level"`, which shou
 }
 ```
 
+### `level`
+
+The required `level` attribute contains an integer from 1 to 6, defining the heading's heirarchical level.
 
 
+## `hint` (Callout)
 
-## Hint (Callout)
-
-Hints, also known as callouts, are simple block elements with a little more visual interest than a standard paragraph, helping them to stand out against body text.
+The `hint` element, also known as a callout, is a simple block element with a little more visual interest than typical body text.
 
 ```javascript
 {
@@ -127,7 +161,9 @@ Hints, also known as callouts, are simple block elements with a little more visu
 }
 ```
 
-The following values are available for the `variant` attribute:
+### `variant`
+
+The `variant` attribute may be any of the following:
 
 | Value | Description |
 | :--- | :--- |
@@ -140,27 +176,38 @@ The following values are available for the `variant` attribute:
 
 
 
-## Hyperlink
+## `hyperlink`
 
-Hyperlinks allow document authors to link to external content. Hyperlinks are not restricted to web-based documents, and may use any of the following protocols:
+Hyperlinks allow document authors to link to external content. Hyperlinks are not restricted to web-based documents, and may use any valid protocol, such as:
 
 * `https:`
 * `http:`
 * `mailto:`
 * `file:`
+* etc.
 
 ```javascript
 {
   "type": "link",
+  "title": "My website",
   "href": "https://seanbailey.io",
   "children": ["seanbailey.io"]
 }
 ```
 
+### `title`
+
+The `title` attribute is an optional string, which will display when hovering the cursor over the link.
+
+
+### `href`
+
+The `href` attribute contains the full URI to the external content.
 
 
 
-## Image
+
+## `image`
 
 Images are currently experimental. Here's what the mark-up may look like in future:
 
@@ -344,9 +391,9 @@ The optional `bullet` attribute allows a list item to override the bullet of its
 ```
 
 
-## Paragraph
+## `paragraph`
 
-Basic body text. Paragraphs do not have any special keys.
+Basic body text. Paragraphs do not have any special attributes.
 
 ```javascript
 {
@@ -358,7 +405,7 @@ Basic body text. Paragraphs do not have any special keys.
 ```
 
 
-## Span
+## `span`
 
 Spans are simple elements which allow you to apply inline formatting to text.
 
@@ -387,7 +434,7 @@ Document authors should never really be aware of the existence of span elements.
 }
 ```
 
-## Table
+## `table`
 
 Tables let you show information in tabular form \(a two dimensional table comprised of rows and columns\).
 
@@ -403,7 +450,7 @@ Tables let you show information in tabular form \(a two dimensional table compri
 }
 ```
 
-## Table Cell
+## `tableCell`
 
 The cell element represents a single cell within a table. You can also use the optional `colSpan` and `rowSpan` attributes to have a single cell span across multiple rows or columns.
 
@@ -431,7 +478,7 @@ The cell element represents a single cell within a table. You can also use the o
 }
 ```
 
-## Table Row
+## `tableRow`
 
 The row element contains a single row of table cells.
 
@@ -446,11 +493,11 @@ The row element contains a single row of table cells.
 }
 ```
 
-## Table Column Group
+## `tableColumnGroup`
 
 The optional column group element contains only columns as children. It allows you to apply styles to all cells within the defined columns. This is mostly used as an optimisation technique, to prevent duplicate inline styles appearing on every cell in a column.
 
-### Table Column
+## `tableColumn`
 
 Column elements must be contained within a `columnGroup` element, and can span zero or more columns using the `span` attribute.
 
