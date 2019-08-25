@@ -193,23 +193,40 @@ A bulleted or numbered list element.
 ```javascript
 {
   "type": "list",
+  "bullet": {
+    "variant": "filledBullet"
+  },
+  "children": [
+    { "type": "listItem", "children": [...] },
+    ...
+  ]
+}
+```
+
+Which produces:
+
+```
+• One fish
+• Two fish
+• Etc.
+```
+
+
+
+
+### Bullet Cycle
+
+Nested lists follow a sequence called a _bullet cycle_, where each level of nesting moves one position further in the cycle. When we reach the end, we wrap around to the beginning again. In other words, the first level of lists follows the first bullet definition, the second follows the second, and so on. Until eventually the cycle wraps around to the start again.
+
+```
+{
+  "type": "list",
   "bulletCycle": [
     { "variant": "lowerRoman", "suffix": "." },
     { "variant": "lowerGreek", "suffix": "." },
-    "filledCircle",
+    "filledBullet",
   ],
-  "children": [
-    {
-      "type": "listItem",
-      "children": [
-        "Level 1",
-        {
-          "type": "list",
-          "children": [...]
-        }
-      ]
-    }
-  ]
+  "children": [...]
 }
 ```
 
@@ -223,11 +240,8 @@ i. Level 1
 ii. Another list item
 ```
 
-### Bullet Cycle
+The `"bulletCycle"` attribute applies to all nested lists, unless a nested list has defined its own `"bullet"`—in wich case that list will ignore the overall cycle, but the cycle will continue to apply to any other nested lists.
 
-List bullet styles follow a sequence called a _cycle_. 
-
-List and list item element may define their own bullets, and ignore the overall cycle. 
 
 ### Bullets
 
@@ -258,7 +272,7 @@ Bullets are defined as either a `"variant"`...
 }
 ```
 
-Bullets may also optional have a prefix and suffix, which can contain any string.
+Bullets may also optional have a `"prefix"` and `"suffix"`, which can contain any string. 
 
 ### Numbering Variants
 
