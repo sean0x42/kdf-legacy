@@ -223,7 +223,7 @@ The `bullet` attribute defines the appearance of the list's bullets or numbering
 | Attribute | Description |
 | :--- | :--- |
 | `char` | A unicode character. e.g. `'>'` |
-| `variant` | One of the many available variants. See [Numbering Variants](#numbering-variants) and [Bullet Variants](#bullet-variants). |
+| `variant` | One of the many available variants. See [Numbering Variants](/content/bullets-and-numbering#numbering-variants) and [Bullet Variants](/content/bullets-and-numbering#bullet-variants). |
 | `image` | A resource URI which points to an image |
 
 If a bullet is not defined for a list, then the document renderer will search for an appropriate [bullet cycle](#bulletcycle), and use the matching bullet definition.
