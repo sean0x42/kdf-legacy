@@ -1,4 +1,4 @@
-# Styling Pages
+# Pages
 
 {% hint style="info" %}
 **Note**: There is presently no way to have different styles for different pages. If there is sufficient demand for such a feature however, we could add more fine control in future.
@@ -84,10 +84,10 @@ Note that we use the [typographic definition of margin](https://en.m.wikipedia.o
 
 ## Other
 
-The following [KCSS expressions](kcss.md) are also available for use in page styles:
+The following [KCSS expressions](../kcss.md) are also available for use in page styles:
 
 * Background
 * Borders
 
-{% page-ref page="kcss.md" %}
+{% page-ref page="../kcss.md" %}
 

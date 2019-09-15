@@ -8,20 +8,21 @@
 
 * [Introduction to Content](content/introduction.md)
 * [Nodes](content/nodes.md)
-* [Elements](content/elements.md)
-* [Bullets & Numbering](content/bullets-and-numbering.md)
+* [Elements](content/elements/README.md)
+  * [Counter Templates](content/elements/counter-templates.md)
+  * [Bullets & Numbering](content/elements/bullets-and-numbering.md)
 
 ## Metadata
 
 * [Introduction to Metadata](metadata/introduction.md)
-* [Required Fields](metadata/required-fields.md)
+* [Standard Fields](metadata/standard-fields.md)
 
 ## Styles
 
 * [Introduction to Styles](styles/introduction.md)
 * [KCSS](styles/kcss.md)
 * [Colour & Gradients](styles/colour-and-gradients.md)
-* [Styling Pages](styles/styling-pages.md)
-* [Page Sizes](styles/page-sizes.md)
+* [Pages](styles/styling-pages/README.md)
+  * [Page Sizes](styles/styling-pages/page-sizes.md)
 * [Classes](styles/classes.md)
 

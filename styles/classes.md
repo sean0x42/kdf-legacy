@@ -46,10 +46,10 @@ A required _human readable_ string, which can be shown to users.
 
 ## Element
 
-The optional `element` key is used to define how elements should be transformed when changing to this class. 
+The optional `element` key is used to define how elements should be transformed when changing to this class.
 
 {% hint style="info" %}
-**Note**: When defining an element, you _can not use_ either the `children` or the `class` attributes when defining the element. Otherwise, you may use any valid attributes for defining an [element](../content/elements.md).
+**Note**: When defining an element, you _can not use_ either the `children` or the `class` attributes when defining the element. Otherwise, you may use any valid attributes for defining an [element](../content/elements/).
 {% endhint %}
 
 Picture the following KDF element:
@@ -98,7 +98,7 @@ This would produce the following KDF element:
 
 ## Styles
 
-A required list of [KCSS expressions](kcss.md), which are enumerated within a JSON object. 
+A required list of [KCSS expressions](kcss.md), which are enumerated within a JSON object.
 
 ```javascript
 {

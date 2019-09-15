@@ -2,13 +2,12 @@
 
 This section lists all available KDF elements in alphabetical order.
 
+## Block Quote
 
-## `blockQuote`
-
-A `blockQuote` allows you to clearly outline an extract from another source. e.g.
+The `blockQuote` element allows you to clearly outline an extract from another source. e.g.
 
 > ...we show how a 19hz standing air wave may under certain conditions create sensory phenomena suggestive of a ghost...  
-> —_Vic Tandy & Tony R. Lawrence, 1998. [The Ghost in the Machine](http://www.richardwiseman.com/resources/ghost-in-machine.pdf)_
+> —_Vic Tandy & Tony R. Lawrence, 1998._ [_The Ghost in the Machine_](http://www.richardwiseman.com/resources/ghost-in-machine.pdf)
 
 ```javascript
 {
@@ -30,15 +29,13 @@ A `blockQuote` allows you to clearly outline an extract from another source. e.g
 }
 ```
 
-## `blockQuoteAttribution`
+## Block Quote Attribution
 
-The `blockQuoteAttribution` element must be a top level child of a `blockQuote` element. It gives proper attribution to the author, or authors, of external content. For example usage, see [`blockQuote`](#blockquote).
+The `blockQuoteAttribution` element must be a top level child of a `blockQuote` element. It gives proper attribution to the author, or authors, of external content. For example usage, see [`blockQuote`](./#block-quote).
 
+## Caption
 
-
-## `caption`
-
-The `caption` element is used to label images, tables, and other block content.
+The `caption` element is used to label images, tables, and other block content. Note that captions must be included as immediate children of the block element they are captioning.
 
 ```javascript
 {
@@ -55,12 +52,9 @@ The `caption` element is used to label images, tables, and other block content.
 Captions are the only valid children of an image.
 {% endhint %}
 
+## Code
 
-
-
-## `code`
-
-Inline `code` provides no syntax highlighting—although the user may add their own emphasis by adjusting the appearance of the text.
+The inline `code` element provides no syntax highlighting—although the user may add their own emphasis by adjusting the appearance of the text.
 
 ```javascript
 {
@@ -78,10 +72,9 @@ When used in context, the above sample would look something like this:
 
 > You can always use the `println!` macro to print a string to the console. e.g. `println!("Hello world")`.
 
+## Code Block
 
-## `codeBlock`
-
-Code blocks allow document authors to show a larger portion of their code, and make full use of syntax highlighting for supported languages.
+The `codeBlock` element allows document authors to show a larger portion of their code, and make full use of syntax highlighting for supported languages.
 
 ```javascript
 {
@@ -93,7 +86,7 @@ Code blocks allow document authors to show a larger portion of their code, and m
 }
 ```
 
-Which would render a code block that looks something like this:
+The above markup would render a code block that looks something like this:
 
 {% code-tabs %}
 {% code-tabs-item title="players\_controller.rb" %}
@@ -107,24 +100,48 @@ end
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-
-### `language`
+### `language`: string
 
 The `language` attribute defines the programming language that is used within the code block. Doing so allows the syntax highlighting engine to apply the correct formatting. If no `language` is defined, a value of`"plain text"` is assumed.
 
-
-### `lineNumbers`
+### `lineNumbers`: boolean
 
 The optional `lineNumbers` attribute determines whether line numbers should be drawn. If the attribute is not defined, then line numbers are shown, unless the code block is only one line tall.
 
+### `fileName`: string
 
-### `fileName`
+The optional `fileName` attribute adds the name of the file at the top of the code block.
 
-The optional `fileName` attribute adds the name of the file at the top of the code block. 
+## Counter
 
+The `counter` element is used to automatically number repeating elements in a document. They are commonly used for numbering headings, images and tables. 
 
+```javascript
+{
+  "type": "heading",
+  "level": 2,
+  "children": [
+    { "type": "counter", "use": "headings" },
+    "Designing for designers"
+  ]
+}
+```
 
-## `heading`
+Assuming that the `headings` counter template is defined as `"{parent?}{counter:decimal}."`, the above markup would produce the following content:
+
+```text
+1.3. Designing for designers
+```
+
+### `use`: string
+
+The `use` attribute contains the unique identifier of a [counter template](counter-templates.md).
+
+### `depth`: integer \(Optional\)
+
+The optional `depth` attribute defines the counter's nested depth. Note that this attribute can be inferred when the counter is an immediate child of a [heading](./#heading) element, based on the heading's level.
+
+## Heading
 
 A simple section `heading`.
 
@@ -137,12 +154,11 @@ A simple section `heading`.
 }
 ```
 
-### `level`
+### `level`: integer
 
 The required `level` attribute contains an integer from 1 to 6, defining the heading's heirarchical level.
 
-
-## `hint` (Callout)
+## Hint
 
 The `hint` element, also known as a callout, is a simple block element with a little more visual interest than typical body text.
 
@@ -161,7 +177,7 @@ The `hint` element, also known as a callout, is a simple block element with a li
 }
 ```
 
-### `variant`
+### `variant`: string
 
 The `variant` attribute may be any of the following:
 
@@ -172,11 +188,7 @@ The `variant` attribute may be any of the following:
 | `"warning"` | An orange hint, with a warning icon. |
 | `"error"` | A red hint, with an error icon. |
 
-
-
-
-
-## `hyperlink`
+## Hyperlink
 
 Hyperlinks allow document authors to link to external content. Hyperlinks are not restricted to web-based documents, and may use any valid protocol, such as:
 
@@ -195,19 +207,15 @@ Hyperlinks allow document authors to link to external content. Hyperlinks are no
 }
 ```
 
-### `title`
+### `title`: string
 
 The `title` attribute is an optional string, which will display when hovering the cursor over the link.
 
-
-### `href`
+### `href`: string
 
 The `href` attribute contains the full URI to the external content.
 
-
-
-
-## `image`
+## Image
 
 Images are currently experimental. Here's what the mark-up may look like in future:
 
@@ -230,10 +238,7 @@ Images are currently experimental. Here's what the mark-up may look like in futu
 **Warning**: Resource URIs are experimental and very liable to change.
 {% endhint %}
 
-
-
-
-## `list`
+## List
 
 A bulleted or numbered `list`, which enumerates zero or more `listItem`s. Sample markup follows.
 
@@ -252,33 +257,32 @@ A bulleted or numbered `list`, which enumerates zero or more `listItem`s. Sample
 
 After rendering this list, you would get something like the following:
 
-```
+```text
 • One fish
 • Two fish
 • Red fish
 • Blue fish
 ```
 
-### `bullet`
+### `bullet`: Object
 
 {% hint style="info" %}
-**Note**: The term _bullet_ is used interchangeably throughout this section to refer to both bullets and numbering. 
+**Note**: The term _bullet_ is used interchangeably throughout this section to refer to both bullets and numbering.
 {% endhint %}
 
 The `bullet` attribute defines the appearance of the list's bullets or numbering. A bullet must have one—and only one—of the following attributes:
 
 | Attribute | Description |
 | :--- | :--- |
-| `char` | A unicode character. e.g. `'>'` |
-| `variant` | One of the many available variants. See [Numbering Variants](/content/bullets-and-numbering#numbering-variants) and [Bullet Variants](/content/bullets-and-numbering#bullet-variants). |
+| `char` | A single Unicode character. e.g. `'>'` |
+| `variant` | One of the many available variants. See [Numbering Variants](bullets-and-numbering.md#numbering-variants) and [Bullet Variants](bullets-and-numbering.md#bullet-variants). |
 | `image` | A resource URI which points to an image |
 
-If a bullet is not defined for a list, then the document renderer will search for an appropriate [bullet cycle](#bulletcycle), and use the matching bullet definition.
+If a bullet is not defined for a list, then the document renderer will search for an appropriate [bullet cycle](./#bulletcycle), and use the matching bullet definition.
 
+#### `prefix`: char
 
-#### `prefix`
-
-The `prefix` attribute defines a single unicode character that will appear before the bullet.
+The `prefix` attribute defines a single Unicode character that will appear before the bullet.
 
 ```javascript
 {
@@ -287,13 +291,13 @@ The `prefix` attribute defines a single unicode character that will appear befor
 }
 ```
 
-```
+```text
 -a Each letter in this list is immediately prefixed by a '-' character.
 -b You can use the prefix attribute in conjunction with the suffix attribute...
 -c ...to create some interesting looking bullets.
 ```
 
-#### `suffix`
+#### `suffix`: char
 
 The `suffix` attribute defines a single unicode character that will appear after the bullet.
 
@@ -304,15 +308,14 @@ The `suffix` attribute defines a single unicode character that will appear after
 }
 ```
 
-```
+```text
 1. A dot is added to each list item
 2. Thanks to the suffix attribute.
 ```
 
+#### `startIndex`: integer
 
-#### `startIndex`
-
-A non-negative integer (>= 0), defining where numbering for an ordered list should begin.
+A non-negative integer \(&gt;= 0\), defining where numbering for an ordered list should begin.
 
 ```javascript
 {
@@ -322,17 +325,16 @@ A non-negative integer (>= 0), defining where numbering for an ordered list shou
 }
 ```
 
-```
+```text
 5. First item
 6. Second item
 ```
 
-
-### `bulletCycle`
+### `bulletCycle`: Array&lt;Object&gt;
 
 Nested lists follow a sequence called a _bullet cycle_, where each level of nesting moves one position further in the cycle. When the end is reached, the current bullet wraps around to the beginning again.
 
-```
+```text
 {
   "type": "list",
   "bulletCycle": [
@@ -356,11 +358,9 @@ ii. Another list item
 
 The `bulletCycle` attribute applies to all nested lists, unless a nested list has defined its own `"bullet"`—in wich case that list will ignore the overall cycle.
 
+## List Item
 
-
-## `listItem`
-
-A `listItem` represents a single entry within a larger `list`. 
+A `listItem` element represents a single entry within a larger `list`.
 
 ```javascript
 {
@@ -375,7 +375,7 @@ A `listItem` represents a single entry within a larger `list`.
 }
 ```
 
-### `bullet`
+### `bullet`: Object
 
 The optional `bullet` attribute allows a list item to override the bullet of its parent `list`.
 
@@ -390,10 +390,9 @@ The optional `bullet` attribute allows a list item to override the bullet of its
 }
 ```
 
+## Paragraph
 
-## `paragraph`
-
-Basic body text. Paragraphs do not have any special attributes.
+The `paragraph` element contains body text.
 
 ```javascript
 {
@@ -404,8 +403,7 @@ Basic body text. Paragraphs do not have any special attributes.
 }
 ```
 
-
-## `span`
+## Span
 
 Spans are simple elements which allow you to apply inline formatting to text.
 
@@ -434,7 +432,7 @@ Document authors should never really be aware of the existence of span elements.
 }
 ```
 
-## `table`
+## Table
 
 Tables let you show information in tabular form \(a two dimensional table comprised of rows and columns\).
 
@@ -450,7 +448,7 @@ Tables let you show information in tabular form \(a two dimensional table compri
 }
 ```
 
-## `tableCell`
+## Table Cell
 
 The cell element represents a single cell within a table. You can also use the optional `colSpan` and `rowSpan` attributes to have a single cell span across multiple rows or columns.
 
@@ -478,7 +476,7 @@ The cell element represents a single cell within a table. You can also use the o
 }
 ```
 
-## `tableRow`
+## Table Row
 
 The row element contains a single row of table cells.
 
@@ -493,11 +491,11 @@ The row element contains a single row of table cells.
 }
 ```
 
-## `tableColumnGroup`
+## Table Column Group
 
 The optional column group element contains only columns as children. It allows you to apply styles to all cells within the defined columns. This is mostly used as an optimisation technique, to prevent duplicate inline styles appearing on every cell in a column.
 
-## `tableColumn`
+## Table Column
 
 Column elements must be contained within a `columnGroup` element, and can span zero or more columns using the `span` attribute.
 
@@ -514,3 +512,4 @@ Column elements must be contained within a `columnGroup` element, and can span z
   ]
 }
 ```
+

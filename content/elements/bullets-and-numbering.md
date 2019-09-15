@@ -2,7 +2,6 @@
 
 This page lists all available variants for both bullets and numbering.
 
-
 ## Bullet Variants
 
 The following variants are available for bullets:
@@ -13,8 +12,6 @@ The following variants are available for bullets:
 | `"hollowBullet"` | ◦ A hollow circle |
 | `"filledSquare"` | ▪ A filled square |
 | `"hollowSquare"` | ▫ A hollow square |
-
-
 
 ## Numbering Variants
 
@@ -30,3 +27,4 @@ The following variants for an ordered list are available:
 | `"upperGreek"` | Α, Β, Γ, Δ, Ε, Ζ, etc. |
 | `"lowerLatin"` | a, b, c, d, e, f, etc. |
 | `"upperLatin"` | A, B, C, D, E, F, etc. |
+

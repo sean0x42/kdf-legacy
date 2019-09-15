@@ -2,11 +2,11 @@
 description: This page outlines which fields are required for a valid meta.json file.
 ---
 
-# Required Fields
+# Standard Fields
 
 ## Title
 
-Every document must have a `"title"`. The title should be a human readable string, which can be shown to both document authors and readers. 
+Every document must have a `"title"`. The title should be a human readable string, which can be shown to both document authors and readers.
 
 {% code-tabs %}
 {% code-tabs-item title="meta.json" %}
@@ -21,7 +21,7 @@ Every document must have a `"title"`. The title should be a human readable strin
 
 ## Authors
 
-The `"authors"` metadata field, contains an array of strings, listing the names of each person that contributed. 
+The `"authors"` metadata field, contains an array of strings, listing the names of each person that contributed.
 
 {% code-tabs %}
 {% code-tabs-item title="meta.json" %}
@@ -35,6 +35,16 @@ The `"authors"` metadata field, contains an array of strings, listing the names 
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
+## KDF Version
+
+To enable backwards compatibility between documents, it is strongly recommend that each document defines the version of KDF that was used to compose it. This allows document processors to efficiently update a document to a newer version of KDF.
+
+```javascript
+{
+  "kdfVersion": "1.0.0"
+}
+```
+
 ## Timestamps
 
 A number of important timestamps should be included in each document's metadata, such as the date of creation, and last modification. All timestamps must conform to the [ISO 8601 standard](https://www.iso.org/iso-8601-date-and-time-format.html). [Wikipedia](https://en.m.wikipedia.org/wiki/ISO_8601) provides a good summary of the specification for those in a rush.
@@ -46,7 +56,7 @@ Time of document creation.
 {% code-tabs %}
 {% code-tabs-item title="meta.json" %}
 ```javascript
-{
+{
   ...,
   "createdAt": "2019-08-03T02:37:12+11",
   ...
@@ -82,7 +92,7 @@ The total amount of time spent editing the document. Implementations are only ex
 {% code-tabs %}
 {% code-tabs-item title="meta.json" %}
 ```javascript
-{
+{
   ...,
   "editDuration": "PT12H30M5S",
   ...
