@@ -1,4 +1,8 @@
-# Introduction to Content
+---
+description: Introduction to content.json
+---
+
+# Introduction
 
 Kauri represents the contents of a document as a tree, where the root node is the document itself, and child nodes represent the various types of nodes and elements which make up a document's contents. You can find this tree inside `content.json`.
 

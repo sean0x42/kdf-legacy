@@ -1,6 +1,8 @@
-# Elements
+---
+description: This section lists all available KDF elements in alphabetical order.
+---
 
-This section lists all available KDF elements in alphabetical order.
+# Elements
 
 ## Block Quote
 

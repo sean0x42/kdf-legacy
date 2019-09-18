@@ -1,8 +1,8 @@
 ---
-description: A basic introduction to KDF metadata.
+description: Introduction to meta.json
 ---
 
-# Introduction to Metadata
+# Introduction
 
 > _Metadata is data that provides information about other data._  
 > — [Wikipedia \(Metadata\)](https://en.m.wikipedia.org/wiki/Metadata)
