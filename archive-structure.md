@@ -1,6 +1,12 @@
+---
+description: A breakdown of the files that make up a KDF document.
+---
+
 # Archive Structure
 
-Much like existing document formats, KDF files are actually archives containing a number of other files and directories. This has the benefit of allowing us to [separate concerns](https://en.m.wikipedia.org/wiki/Separation_of_concerns), and make the structure a little more logical. Here's a peek into the directory structure of a KDF file:
+Much like other document formats, KDF files are actually archives containing
+several sub files and directories. Here's a peek into the directory structure of
+a KDF file:
 
 | File/Folder | Purpose |
 | :--- | :--- |
@@ -12,12 +18,7 @@ Much like existing document formats, KDF files are actually archives containing 
 | `styles.json` | Describes how pages and other elements in your document should look.  |
 
 {% hint style="info" %}
-**Hint**: You can check out the contents of a KDF file yourself, by changing the file extension from `.kdf` to `.zip`, and extracting the contents of the archive to your file system.
+**Hint**: You can check out the contents of a KDF file yourself, by changing the
+file extension from `.kdf` to `.zip`, and extracting the contents of the archive
+to your file system.
 {% endhint %}
-
-## Future Expansion
-
-* [x] `colours.json` 
-* [ ] Version control
-* [x] Dictionary
-

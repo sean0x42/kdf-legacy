@@ -12,11 +12,11 @@ description: A quick introduction to the Kauri Document Format.
 
 The following is a pseudo-technical specification which defines and discusses the Kauri Document Format \(KDF\). KDF is a [JSON](https://json.org) based file format, which can be used to describe an editable document. It was designed for use alongside the desktop document processor [Kauri](https://github.com/sean0x42/kauri), and enables the following unique features:
 
-* [ ] Shared colour palettes
+* [x] Shared colour palettes
 * [ ] Persistent edit history
 * [ ] Persistent clipboard history
 * [ ] Document versioning
-* [ ] Document level dictionary
+* [x] Document level dictionary
 * [ ] And more to come...
 
 ## Motivation
