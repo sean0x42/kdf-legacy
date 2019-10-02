@@ -177,7 +177,6 @@ A simple section `heading`.
 {
   "type": "heading",
   "level": 1,
-  "styles": {},
   "children": ["Conclusion"]
 }
 ```
@@ -426,7 +425,6 @@ The `paragraph` element contains body text.
 {
   "type": "paragraph",
   "class": "body",
-  "styles": {},
   "children": ["All their equipment and instruments are alive."]
 }
 ```
