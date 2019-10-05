@@ -15,7 +15,8 @@ The `blockQuote` element allows you to clearly outline an extract from another s
 {
   "type": "blockQuote",
   "children": [
-    "...we show how a 19hz standing air wave may under certain conditions create sensory phenomena suggestive of a ghost...",
+    "...we show how a 19hz standing air wave may under certain conditions create ",
+    "sensory phenomena suggestive of a ghost...",
     {
       "type": "blockQuoteAttribution",
       "children": [
@@ -143,16 +144,40 @@ The `use` attribute contains the unique identifier of a [counter template](count
 
 The optional `depth` attribute defines the counter's nested depth. Note that this attribute can be inferred when the counter is an immediate child of a [heading](./#heading) element, based on the heading's level.
 
+## Footnote
+
+The `footnote` element allows authors to add footnotes to their documents. The content of a footnote will be automatically rendered in the footer of the current page.
+
+```javascript
+{
+  "type": "paragraph",
+  "children": [
+    "One promising approach to solving this problem came from a 2011 blog post by ",
+    "Grady Kuhnline, titled Length Unit Conversion in JavaScript",
+    {
+      "type": "footnote",
+      "children": [
+        {
+          "type": "hyperlink",
+          "href": "https://2012.heygrady.com/blog/2011/12/21/length-and-angle-unit-conversion-in-javascript/",
+          "children": ["https://2012.heygrady.com/blog/2011/12/21/length-and-angle-unit-conversion-in-javascript/"]
+        }
+      ]
+    },
+    "."
+  ]
+}
+```
+
 ## Heading
 
 A simple section `heading`.
 
 ```javascript
 {
-    "type": "heading",
-    "level": 1,
-    "styles": {},
-    "children": ["Conclusion"]
+  "type": "heading",
+  "level": 1,
+  "children": ["Conclusion"]
 }
 ```
 
@@ -400,7 +425,6 @@ The `paragraph` element contains body text.
 {
   "type": "paragraph",
   "class": "body",
-  "styles": {},
   "children": ["All their equipment and instruments are alive."]
 }
 ```
