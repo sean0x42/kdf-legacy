@@ -27,5 +27,5 @@
 
 ## Miscellaneous
 
-* [Colours](misc/colours.md)
+* [Document Colours](misc/colours.md)
 * [Dictionary](misc/dictionary.md)
