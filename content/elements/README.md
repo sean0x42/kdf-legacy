@@ -261,6 +261,18 @@ Images are currently experimental. Here's what the mark-up may look like in futu
 }
 ```
 
+### `viewPort`: string
+
+The `viewPort` attribute defines the visible area of an image, and can be used to non-destructively crop an image. It should contain 4 integers, or two XY positions. These positions define the top-left and bottom-right corners of a rectangle, which will be used as the viewport.
+
+### `alt`: string
+
+The `alt` attribute adds alternative text to the image, which will be shown if the image fails to load for any reason, or if read by a screen reader.
+
+### `source`: string
+
+The `source` attribute contains a resource URI, which points to an image.
+
 {% hint style="warning" %}
 **Warning**: Resource URIs are experimental and very liable to change.
 {% endhint %}
