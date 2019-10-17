@@ -4,18 +4,32 @@ description: Specification for colours.json
 
 # Document Colours
 
-Document level colour palettes are a must have for any creative software. They allow users to define and name custom shades, to re-use throughout the document.
+Document level colours allow users to define and name shades of colour, which all users may then reference throughout the document.
+
+`colours.json` is used to keep track of these colours. It contains an ordered list of shades, where each shade has a unique identifier, a human readable name, and a valid colour value.
 
 ```json
-{
-  "cosmic-blue-500": "#3647E2",
-  "cosmic-blue-400": "#4857E4",
-  "cosmic-blue-300": "#5A68E7",
+[
+  {
+    "id": "cosmic-blue-500",
+    "name": "Cosmic Blue 500",
+    "value": "#3647E2"
+  },
+  {
+    "id": "cosmic-blue-400",
+    "name": "Cosmic Blue 400",
+    "value": "#4857E4"
+  },
+  {
+    "id": "cosmic-blue-300",
+    "name": "Cosmic Blue 300",
+    "value": "#5A68E7"
+  },
   ...
-}
+]
 ```
 
-Other elements throughout the document may reference these colours, rather than hardcoding their value.
+To reference a defined shade, simply prefix its unique ID with a `$` symbol, as seen below.
 
 ```json
 {
