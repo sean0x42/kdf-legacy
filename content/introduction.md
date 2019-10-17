@@ -27,10 +27,6 @@ Kauri represents the contents of a document as a tree, where the root node is th
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-{% hint style="warning" %}
-**Warning**: Elements must always be stored in a JSON array, and never a JSON object. Arrays are the only JSON structure that is guaranteed to preserve its order.
-{% endhint %}
-
 ## Elements
 
 Elements are defined by a single JSON object, containing each of the following keys:
